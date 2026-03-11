@@ -1,13 +1,10 @@
 import Image from "next/image";
-import Hero from "./pages/Herosection";
-import About from "./about/page";
-
+import Hero from "./components/Herosection";
 
 export default function Home() {
   return (
    <>
    <Hero />
-   <About />
    </>
   );
 }

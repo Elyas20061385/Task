@@ -11,16 +11,16 @@ const Navbar = () => {
         <div className="flex items-center gap-8">
           <div className="text-2xl font-bold italic">A</div>
           <div className="hidden md:flex gap-6 text-sm font-medium text-gray-600">
-            <Link href="/pages" className="transition-colors hover:text-[#FF7A5C]">Home</Link>
+            <Link href="/" className="transition-colors hover:text-[#FF7A5C]">Home</Link>
             <Link href="/about" className="transition-colors hover:text-[#FF7A5C]">About</Link>
             <div className="relative group cursor-pointer flex items-center hover:text-black">
               Pages
               <span className="ml-1 text-[10px] transition-transform group-hover:rotate-180">▼</span>
               <div className="absolute top-full left-0 mt-2 w-40 bg-white border border-gray-100 shadow-lg rounded-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                <div className="py-2 flex flex-col text-sm">
-                  <a href="#" className="px-4 py-2 hover:bg-gray-50 hover:text-[#FF7A5C]">Services</a>
-                  <a href="#" className="px-4 py-2 hover:bg-gray-50 hover:text-[#FF7A5C]">blog</a>
-                  <a href="#" className="px-4 py-2 hover:bg-gray-50 hover:text-[#FF7A5C]">Contact Us</a>
+                <div className="py-2 flex flex-col text-sm gap-2 ml-2 justify-center">
+                  <Link href="/blog" className="transition-colors hover:text-[#FF7A5C]">Blog</Link>
+                  <Link href="/services" className="transition-colors hover:text-[#FF7A5C]">Services</Link>
+                  <Link href="/contact" className="transition-colors hover:text-[#FF7A5C]">Contact Us</Link>
                 </div>
               </div>
             </div>
