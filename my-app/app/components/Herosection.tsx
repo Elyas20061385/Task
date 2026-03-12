@@ -1,6 +1,9 @@
 "use client";
 import React from 'react';
 import Image from 'next/image';
+import Services from './Services';
+import Portfolio from './Ourworks';
+import WhyChooseUs from './Whychooseus';
 import { motion } from 'framer-motion';
 
 const Hero = () => {
@@ -90,6 +93,9 @@ const Hero = () => {
                 </motion.div>
 
             </main>
+            <Services />
+            <Portfolio />
+            <WhyChooseUs />
         </section>
     );
 };
