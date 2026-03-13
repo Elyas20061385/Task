@@ -6,17 +6,17 @@ import Image from 'next/image';
 
 const features = [
   {
-    icon: <ShieldCheck className="w-6 h-6 text-[#FF7A5C]" />,
+    icon: <ShieldCheck className="w-6 h-6 text-[#21a07f]" />,
     title: "تضمین کیفیت اجرایی",
     desc: "ما از بهترین متریال‌های روز دنیا برای پروژه‌های شما استفاده می‌کنیم."
   },
   {
-    icon: <Zap className="w-6 h-6 text-[#FF7A5C]" />,
+    icon: <Zap className="w-6 h-6 text-[#21a07f]" />,
     title: "سرعت در تحویل",
     desc: "برنامه‌ریزی دقیق زمانی برای اتمام پروژه بدون افت کیفیت."
   },
   {
-    icon: <Award className="w-6 h-6 text-[#FF7A5C]" />,
+    icon: <Award className="w-6 h-6 text-[#21a07f]" />,
     title: "تیم بین‌المللی",
     desc: "همکاری با طراحان برتر که دارای جوایز معتبر طراحی هستند."
   }
@@ -38,12 +38,12 @@ const WhyChooseUs = () => {
             {/* تصویر اصلی با لبه‌های گرد مدرن */}
             <div className="relative w-full h-125 md:h-150 rounded-[48px] overflow-hidden shadow-2xl">
               <Image 
-                src="/about-image.jpg" // تصویر محیط کار یا تیم خود را قرار دهید
+                src="/student.png" // تصویر محیط کار یا تیم خود را قرار دهید
                 alt="Our Workspace"
                 fill
                 className="object-cover"
               />
-              <div className="absolute inset-0 bg-linear-to-tr from-[#FF7A5C]/20 to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-tr from-[#21a07f]/20 to-transparent" />
             </div>
 
             {/* کارت شناور ۱: آمار مشتریان */}
@@ -53,8 +53,8 @@ const WhyChooseUs = () => {
               className="absolute -top-6 -right-6 md:right-0 bg-white p-6 rounded-3xl shadow-xl border border-gray-100 hidden sm:block"
             >
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center">
-                  <Users className="text-[#FF7A5C]" />
+                <div className="w-12 h-12 bg-[#21a07f] rounded-full flex items-center justify-center">
+                  <Users className="text-white" />
                 </div>
                 <div>
                   <p className="text-2xl font-black text-gray-900">98%</p>
@@ -67,12 +67,12 @@ const WhyChooseUs = () => {
             <motion.div 
               animate={{ y: [0, 20, 0] }}
               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-              className="absolute -bottom-10 -left-6 bg-gray-900 p-8 rounded-4xl shadow-2xl text-white hidden sm:block"
+              className="absolute -bottom-10 -left-6 bg-[#21a07f] p-8 rounded-4xl shadow-2xl text-white hidden sm:block"
             >
               <div className="flex flex-col gap-2">
-                <Globe className="text-[#FF7A5C] w-10 h-10 mb-2" />
+                <Globe className="text-white w-10 h-10 mb-2" />
                 <p className="text-3xl font-black italic">10+ Years</p>
-                <p className="text-gray-400 text-sm">تجربه در پروژه‌های لوکس</p>
+                <p className="text-white text-sm">تجربه در پروژه‌های لوکس</p>
               </div>
             </motion.div>
           </motion.div>
@@ -83,7 +83,7 @@ const WhyChooseUs = () => {
               <motion.span 
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
-                className="inline-block px-4 py-1 rounded-full bg-orange-50 text-[#FF7A5C] text-sm font-black uppercase tracking-widest"
+                className="inline-block px-4 py-1 rounded-full  text-black text-sm font-black uppercase tracking-widest"
               >
                 Why Choose Us?
               </motion.span>
@@ -93,7 +93,7 @@ const WhyChooseUs = () => {
                 className="text-5xl md:text-6xl font-black text-gray-900 leading-[1.1] tracking-tighter"
               >
                 ما استانداردها را <br />
-                <span className="text-[#FF7A5C]">تغییر می‌دهیم.</span>
+                <span className="text-[#21a07f]">تغییر می‌دهیم.</span>
               </motion.h2>
               <motion.p 
                 initial={{ opacity: 0 }}
@@ -131,7 +131,7 @@ const WhyChooseUs = () => {
               whileInView={{ opacity: 1, y: 0 }}
               className="pt-6"
             >
-              <button className="bg-gray-900 text-white px-10 py-5 rounded-2xl text-lg font-bold hover:bg-[#FF7A5C] transition-all flex items-center gap-3 shadow-xl active:scale-95 group">
+              <button className="bg-[#feba0f] text-white px-10 py-5 rounded-2xl text-lg font-bold  transition-all flex items-center gap-3 shadow-xl active:scale-95 group">
                 مشاوره رایگان بگیرید
                 <span className="group-hover:translate-x-2 transition-transform">→</span>
               </button>
