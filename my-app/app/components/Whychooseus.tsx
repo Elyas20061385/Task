@@ -38,7 +38,7 @@ const WhyChooseUs = () => {
             {/* تصویر اصلی با لبه‌های گرد مدرن */}
             <div className="relative w-full h-125 md:h-150 rounded-[48px] overflow-hidden shadow-2xl">
               <Image 
-                src="/student.png" // تصویر محیط کار یا تیم خود را قرار دهید
+                src="/why.png" // تصویر محیط کار یا تیم خود را قرار دهید
                 alt="Our Workspace"
                 fill
                 className="object-cover"

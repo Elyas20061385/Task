@@ -16,17 +16,44 @@ const team: TeamMember =[
   {
     name: "Ana Belić",
     role: "Social Media Specialist",
-    image: "/student.png",
+    image: "/Edris.png",
     bgColor: "bg-[#feba0f]",
     shape: "rounded-[80px_20px_80px_20px]", 
   },
   {
     name: "Logan Dang",
     role: "WordPress Developer",
-    image: "/student.png",
-    
+    image: "/Elyas.png",
     bgColor: "bg-[#21a07f]",
     shape: "rounded-[60px_10px_60px_10px]", 
+  },
+  {
+    name: "Darko Stanković",
+    role: "UI Designer",
+    image: "/Mahdi.png",
+    bgColor: "bg-[#feba0f]",
+    shape: "rounded-[80px_20px_80px_20px]", 
+  },
+  {
+    name: "Darko Stanković",
+    role: "UI Designer",
+    image: "/Painda.png",
+    bgColor: "bg-[#21a07f]",
+    shape: "rounded-[80px_20px_80px_20px]", 
+  },
+  {
+    name: "Darko Stanković",
+    role: "UI Designer",
+    image: "/student.png",
+    bgColor: "bg-[#feba0f]",
+    shape: "rounded-[80px_20px_80px_20px]", 
+  },
+  {
+    name: "Darko Stanković",
+    role: "UI Designer",
+    image: "/student.png",
+    bgColor: "bg-[#21a07f]",
+    shape: "rounded-[80px_20px_80px_20px]", 
   },
   {
     name: "Darko Stanković",
