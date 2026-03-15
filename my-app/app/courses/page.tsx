@@ -99,7 +99,7 @@ const Courses = () => {
 
             <div className="flex flex-col md:flex-row">
               {/* بخش اطلاعات دوره در مودال */}
-              <div className="md:w-1/2 bg-primary-500 p-8 text-white flex flex-col justify-center">
+              <div className="md:w-1/2 bg-[#21a07f] p-8 text-white flex flex-col justify-center">
                 <selectedCourse.icon className="text-6xl mb-4 opacity-30" />
                 <h2 className="text-3xl font-bold mb-4">دوره متخصص {selectedCourse.title}</h2>
                 <p className="text-white/80 leading-relaxed mb-6">{selectedCourse.description}</p>
@@ -126,7 +126,7 @@ const Courses = () => {
                     <FaPhone className="absolute right-3 top-3.5 text-gray-400" />
                     <input required type="tel" placeholder="شماره تماس (واتس‌اپ)" className="w-full pr-10 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#21a07f] outline-none transition-all" />
                   </div>
-                  <button type="submit" className="w-full bg-primary-500 hover:bg-[#1a8569] text-white font-bold py-3 rounded-lg shadow-lg transition-all active:scale-95">
+                  <button type="submit" className="w-full bg-[#21a07f] hover:bg-[#1a8569] text-white font-bold py-3 rounded-lg shadow-lg transition-all active:scale-95">
                     تایید و ثبت‌نام در دوره
                   </button>
                   <p className="text-[10px] text-gray-400 text-center mt-4">با کلیک روی دکمه، کارشناسان ما جهت تکمیل فرآیند با شما تماس می‌گیرند.</p>

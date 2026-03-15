@@ -8,6 +8,7 @@ import Testimonials from './Testimonials ';
 import StatsAndCTA from './StatsAndCTA';
 import Team from './Team';
 import { motion } from 'framer-motion';
+import { style } from 'framer-motion/client';
 
 const Hero = () => {
     return (
@@ -26,15 +27,15 @@ const Hero = () => {
                     className="w-full lg:w-1/2 flex items-center justify-center gap-3 md:gap-5 h-125"
                 >
                     {[
-                        { src: "/student1.png", h: "h-72", self: "self-center" },
-                        { src: "/student.png", h: "h-96", self: "self-start" },
-                        { src: "/student.jpg", h: "h-96", self: "self-end" },
-                        { src: "/student.png", h: "h-72", self: "self-center" }
+                        { src: "/h1.png", h: "h-72", self: "self-center" },
+                        { src: "/h2.png", h: "h-96", self: "self-start" },
+                        { src: "/h3.png", h: "h-96", self: "self-end" },
+                        { src: "/h3.png", h: "h-72", self: "self-center" }
                     ].map((img, index) => (
                         <motion.div 
                             key={index}
                             whileHover={{ y: -10, scale: 1.02 }}
-                            className={`w-24 md:w-32 ${img.h} ${img.self} relative rounded-full overflow-hidden shadow-2xl border-4 border-white`}
+                            className={`w-24 md:w-32 ${img.h} ${img.self} relative rounded-full overflow-hidden shadow-2xl border-4 border-[#21a07f]`}
                         >
                             <Image 
                                 src={img.src} 

@@ -26,10 +26,10 @@ const StatsAndCTA = () => {
               viewport={{ once: true }}
               className="text-center group"
             >
-              <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gray-50 text-gray-400 group-hover:bg-[#FF7A5C]/10 group-hover:text-[#FF7A5C] transition-all duration-500 mb-4">
+              <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gray-50 text-gray-400 group-hover:bg-[#21a07f]/10 group-hover:text-[#21a07f] transition-all duration-500 mb-4">
                 {stat.icon}
               </div>
-              <h3 className="text-4xl md:text-5xl font-black text-gray-900 mb-2 tracking-tighter">
+              <h3 className="text-4xl md:text-5xl font-black text-[#21a07f] mb-2 tracking-tighter">
                 {stat.value}
               </h3>
               <p className="text-gray-500 font-medium uppercase tracking-widest text-xs">
@@ -44,7 +44,7 @@ const StatsAndCTA = () => {
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          className="relative rounded-[48px] overflow-hidden bg-gray-900 py-16 md:py-24 px-8 md:px-16 text-center"
+          className="relative rounded-[48px] overflow-hidden bg-[#21a07f] py-16 md:py-24 px-8 md:px-16 text-center"
         >
           {/* دکوراسیون پس‌زمینه شیک */}
           <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
@@ -56,21 +56,21 @@ const StatsAndCTA = () => {
             <motion.span 
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              className="text-[#FF7A5C] font-bold tracking-[0.3em] uppercase text-sm mb-6 block"
+              className="text-white font-bold tracking-[0.3em] uppercase text-sm mb-6 block"
             >
               Ready to Transform?
             </motion.span>
             
             <h2 className="text-4xl md:text-7xl font-black text-white leading-tight mb-8 tracking-tighter">
-              بیاین با هم چیزی <br /> <span className="text-transparent bg-clip-text bg-linear-to-r from-orange-400 to-[#FF7A5C]">ماندگار خلق کنیم.</span>
+              بیاین با هم چیزی <br /> <span className="text-transparent bg-clip-text bg-linear-to-r from-[#feba0f] to-[#feba0f]">ماندگار خلق کنیم.</span>
             </h2>
             
-            <p className="text-gray-400 text-lg md:text-xl mb-12 leading-relaxed">
+            <p className="text-white text-lg md:text-xl mb-12 leading-relaxed">
               پروژه‌ی بعدی شما می‌تواند شاهکار بعدی ما باشد. همین امروز مشاوره رایگان خود را رزرو کنید.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-              <button className="w-full sm:w-auto bg-[#FF7A5C] text-white px-10 py-6 rounded-2xl text-xl font-bold hover:bg-[#e66d52] hover:scale-105 transition-all shadow-2xl shadow-[#FF7A5C]/30 flex items-center justify-center gap-3 group">
+              <button className="w-full sm:w-auto bg-[#feba0f] text-white px-10 py-6 rounded-2xl text-xl font-bold hover:bg-[#e2a509] hover:scale-105 transition-all shadow-2xl shadow-[#FF7A5C]/30 flex items-center justify-center gap-3 group">
                 شروع پروژه جدید
                 <ArrowRight className="group-hover:translate-x-2 transition-transform" />
               </button>
@@ -81,15 +81,15 @@ const StatsAndCTA = () => {
             </div>
 
             {/* Social Proof کوچک */}
-            <div className="mt-12 pt-12 border-t border-white/5 flex flex-col items-center gap-4">
+            <div className="mt-12 pt-12 border-t border-[#feba0f] flex flex-col items-center gap-4">
                <div className="flex -space-x-3">
                   {[1,2,3,4].map(i => (
-                    <div key={i} className="w-10 h-10 rounded-full border-2 border-gray-900 bg-gray-800 overflow-hidden">
+                    <div key={i} className="w-10 h-10 rounded-full border-2 border-[#feba0f] bg-white overflow-hidden">
                        <img src={`https://i.pravatar.cc{i+40}`} alt="client" />
                     </div>
                   ))}
                </div>
-               <p className="text-gray-500 text-sm italic">Join 500+ happy clients worldwide</p>
+               <p className="text-white text-sm italic">Join 500+ happy clients worldwide</p>
             </div>
           </div>
         </motion.div>

@@ -105,15 +105,15 @@ const Navbar = () => {
               className="relative bg-white w-full max-w-4xl h-fit max-h-[90vh] rounded-[40px] shadow-[0_32px_64px_rgba(0,0,0,0.2)] overflow-hidden flex flex-col md:flex-row"
             >
               {/* Left Side: Info (Dark) */}
-              <div className="hidden md:flex flex-col justify-between w-1/3 bg-gray-950 p-12 text-white">
+              <div className="hidden md:flex flex-col justify-between w-1/3 bg-[#21a07f] p-12 text-white">
                 <div>
-                  <div className="w-12 h-12 bg-[#FF7A5C] rounded-2xl mb-8 flex items-center justify-center">
+                  <div className="w-12 h-12 bg-[#feba0f] rounded-2xl mb-8 flex items-center justify-center">
                     <Send className="w-6 h-6" />
                   </div>
                   <h3 className="text-3xl font-black mb-4 tracking-tight">بیاین با هم بسازیمش!</h3>
-                  <p className="text-gray-400 leading-relaxed">ما همیشه آماده شنیدن ایده‌های جدید و پروژه‌های هیجان‌انگیز هستیم.</p>
+                  <p className="text-white leading-relaxed">ما همیشه آماده شنیدن ایده‌های جدید و پروژه‌های هیجان‌انگیز هستیم.</p>
                 </div>
-                <div className="text-sm text-gray-500">
+                <div className="text-sm text-white">
                   hello@yourtech.com <br />
                   +98 912 000 0000
                 </div>
@@ -134,19 +134,19 @@ const Navbar = () => {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <div className="space-y-2">
                       <label className="text-[10px] font-black uppercase text-gray-400 ml-1">Full Name</label>
-                      <input type="text" className="w-full bg-gray-50 border-2 border-transparent focus:border-[#FF7A5C]/20 focus:bg-white rounded-2xl p-4 text-sm outline-none transition-all" placeholder="نام شما" />
+                      <input type="text" className="w-full bg-gray-50 border-2 border-transparent focus:border-[#21a07f]/20 focus:bg-white rounded-2xl p-4 text-sm outline-none transition-all" placeholder="نام شما" />
                     </div>
                     <div className="space-y-2">
                       <label className="text-[10px] font-black uppercase text-gray-400 ml-1">Email Address</label>
-                      <input type="email" className="w-full bg-gray-50 border-2 border-transparent focus:border-[#FF7A5C]/20 focus:bg-white rounded-2xl p-4 text-sm outline-none transition-all" placeholder="email@example.com" />
+                      <input type="email" className="w-full bg-gray-50 border-2 border-transparent focus:border-[#21a07f]/20 focus:bg-white rounded-2xl p-4 text-sm outline-none transition-all" placeholder="email@example.com" />
                     </div>
                   </div>
                   <div className="space-y-2">
                     <label className="text-[10px] font-black uppercase text-gray-400 ml-1">Your Project</label>
-                    <textarea rows={4} className="w-full bg-gray-50 border-2 border-transparent focus:border-[#FF7A5C]/20 focus:bg-white rounded-2xl p-4 text-sm outline-none transition-all resize-none" placeholder="در مورد پروژه خود توضیح دهید..."></textarea>
+                    <textarea rows={4} className="w-full bg-gray-50 border-2 border-transparent focus:border-[#21a07f]/20 focus:bg-white rounded-2xl p-4 text-sm outline-none transition-all resize-none" placeholder="در مورد پروژه خود توضیح دهید..."></textarea>
                   </div>
 
-                  <button className="w-full bg-[#FF7A5C] text-white py-5 rounded-2xl font-black text-lg shadow-xl shadow-[#FF7A5C]/20 hover:bg-[#e66d52] transition-all hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-3">
+                  <button className="w-full bg-[#feba0f] text-white py-5 rounded-2xl font-black text-lg shadow-xl shadow-[#feba0f]/20 hover:bg-[#d89e0b] transition-all hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-3">
                     Send Proposal
                     <ArrowRight className="w-5 h-5" />
                   </button>
