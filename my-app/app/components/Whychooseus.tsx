@@ -24,70 +24,21 @@ const features = [
 
 const WhyChooseUs = () => {
   return (
-    <section className="py-24 bg-white overflow-hidden">
+    <section className="py-24 bg-white overflow-hidden top-0 ">
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
-          
-          {/* بخش سمت چپ: تصویر و المان‌های شناور */}
-          <motion.div 
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="w-full lg:w-1/2 relative"
-          >
-            {/* تصویر اصلی با لبه‌های گرد مدرن */}
-            <div className="relative w-full h-125 md:h-150 rounded-[48px] overflow-hidden shadow-2xl">
-              <Image 
-                src="/why.png" // تصویر محیط کار یا تیم خود را قرار دهید
-                alt="Our Workspace"
-                fill
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-linear-to-tr from-[#21a07f]/20 to-transparent" />
-            </div>
-
-            {/* کارت شناور ۱: آمار مشتریان */}
-            <motion.div 
-              animate={{ y: [0, -20, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -top-6 -right-6 md:right-0 bg-white p-6 rounded-3xl shadow-xl border border-gray-100 hidden sm:block"
-            >
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-[#21a07f] rounded-full flex items-center justify-center">
-                  <Users className="text-white" />
-                </div>
-                <div>
-                  <p className="text-2xl font-black text-gray-900">98%</p>
-                  <p className="text-xs text-gray-500 font-bold uppercase tracking-wider">رضایت مشتریان</p>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* کارت شناور ۲: تجربه */}
-            <motion.div 
-              animate={{ y: [0, 20, 0] }}
-              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-              className="absolute -bottom-10 -left-6 bg-[#21a07f] p-8 rounded-4xl shadow-2xl text-white hidden sm:block"
-            >
-              <div className="flex flex-col gap-2">
-                <Globe className="text-white w-10 h-10 mb-2" />
-                <p className="text-3xl font-black italic">10+ Years</p>
-                <p className="text-white text-sm">تجربه در پروژه‌های لوکس</p>
-              </div>
-            </motion.div>
-          </motion.div>
 
           {/* بخش سمت راست: محتوا */}
           <div className="w-full lg:w-1/2 space-y-10">
             <div className="space-y-4">
-              <motion.span 
+              <motion.span
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 className="inline-block px-4 py-1 rounded-full  text-black text-sm font-black uppercase tracking-widest"
               >
                 Why Choose Us?
               </motion.span>
-              <motion.h2 
+              <motion.h2
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 className="text-5xl md:text-6xl font-black text-gray-900 leading-[1.1] tracking-tighter"
@@ -95,7 +46,7 @@ const WhyChooseUs = () => {
                 ما استانداردها را <br />
                 <span className="text-[#21a07f]">تغییر می‌دهیم.</span>
               </motion.h2>
-              <motion.p 
+              <motion.p
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 className="text-gray-500 text-lg leading-relaxed max-w-lg"
@@ -107,7 +58,7 @@ const WhyChooseUs = () => {
             {/* لیست ویژگی‌ها */}
             <div className="space-y-6">
               {features.map((item, idx) => (
-                <motion.div 
+                <motion.div
                   key={idx}
                   initial={{ opacity: 0, x: 30 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -126,7 +77,7 @@ const WhyChooseUs = () => {
             </div>
 
             {/* دکمه نهایی */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               className="pt-6"
@@ -137,7 +88,54 @@ const WhyChooseUs = () => {
               </button>
             </motion.div>
           </div>
+          {/* بخش سمت چپ: تصویر و المان‌های شناور */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="w-full lg:w-1/2 relative"
+          >
+            {/* تصویر اصلی با لبه‌های گرد مدرن */}
+            <div className="relative w-full h-125 md:h-150 rounded-[48px] overflow-hidden shadow-2xl">
+              <Image
+                src="/why.png" // تصویر محیط کار یا تیم خود را قرار دهید
+                alt="Our Workspace"
+                fill
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-linear-to-tr from-[#21a07f]/20 to-transparent" />
+            </div>
 
+            {/* کارت شناور ۱: آمار مشتریان */}
+            <motion.div
+              animate={{ y: [0, -20, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute -top-6 -right-6 md:right-0 bg-white p-6 rounded-3xl shadow-xl border border-gray-100 hidden sm:block"
+            >
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-[#21a07f] rounded-full flex items-center justify-center">
+                  <Users className="text-white" />
+                </div>
+                <div>
+                  <p className="text-2xl font-black text-gray-900">98%</p>
+                  <p className="text-xs text-gray-500 font-bold uppercase tracking-wider">رضایت مشتریان</p>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* کارت شناور ۲: تجربه */}
+            <motion.div
+              animate={{ y: [0, 20, 0] }}
+              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+              className="absolute -bottom-10 -left-6 bg-[#21a07f] p-8 rounded-4xl shadow-2xl text-white hidden sm:block"
+            >
+              <div className="flex flex-col gap-2">
+                <Globe className="text-white w-10 h-10 mb-2" />
+                <p className="text-3xl font-black italic">10+ Years</p>
+                <p className="text-white text-sm">تجربه در پروژه‌های لوکس</p>
+              </div>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
     </section>
