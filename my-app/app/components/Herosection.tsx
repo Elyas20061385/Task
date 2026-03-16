@@ -8,7 +8,6 @@ import Testimonials from './Testimonials ';
 import StatsAndCTA from './StatsAndCTA';
 import Team from './Team';
 import { motion } from 'framer-motion';
-import { style } from 'framer-motion/client';
 
 const Hero = () => {
     return (
@@ -95,7 +94,6 @@ const Hero = () => {
                         </div>
                     </div>
                 </motion.div>
-
             </main>
             <Services />
             <Portfolio />

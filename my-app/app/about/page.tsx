@@ -1,120 +1,116 @@
 "use client";
 import React from 'react';
-import { motion } from 'framer-motion';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 
-const About = () => {
-  const stats = [
-    { label: 'Years Experience', value: '12+' },
-    { label: 'Project Completed', value: '250+' },
-    { label: 'Global Partners', value: '45+' },
-    { label: 'Awards Won', value: '18' },
-  ];
+const AboutClassic = () => {
+    return (
+        <section className="relative py-24 bg-[#FCFAFB] text-[#2D2D2D] font-serif overflow-hidden">
+            <div className="max-w-6xl mx-auto px-6 lg:px-12">
+                
+                {/* Header Section: Elegance in Simplicity */}
+                <div className="text-center mb-24">
+                    <motion.span 
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 1 }}
+                        className="inline-block text-xs uppercase tracking-[0.3em] text-[#8C8C8C] mb-4"
+                    >
+                        Established 2012
+                    </motion.span>
+                    <motion.h2 
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        transition={{ duration: 1.5, delay: 0.2 }}
+                        className="text-4xl md:text-6xl font-light italic leading-tight"
+                    >
+                        The Art of Timeless <br /> 
+                        <span className="font-normal not-italic tracking-tight">Interior Storytelling</span>
+                    </motion.h2>
+                </div>
 
-  return (
-    <section className="relative py-24 bg-white overflow-hidden mt-20">
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          
-          {/* بخش سمت چپ: ترکیب‌بندی بصری خاص */}
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="relative"
-          >
-            {/* المان تزئینی پشت تصویر */}
-            <div className="absolute -top-10 -left-10 w-64 h-64 bg-[#FF7A5C]/10 rounded-full blur-3xl animate-pulse" />
-            
-            <div className="relative z-10 grid grid-cols-2 gap-4">
-              <div className="space-y-4">
-                <div className="relative h-80 rounded-3xl overflow-hidden shadow-2xl transform hover:-rotate-2 transition-transform duration-500">
-                  <Image src="/student.png" alt="Our Work" fill className="object-cover" />
-                </div>
-                <div className="h-48 bg-[#FF7A5C] rounded-3xl flex items-center justify-center p-6 text-white">
-                  <p className="text-xl font-medium leading-tight">پایبند به جزئیات، مشتاق برای نوآوری.</p>
-                </div>
-              </div>
-              <div className="space-y-4 pt-12">
-                <div className="h-48 bg-gray-900 rounded-3xl flex flex-col justify-center p-8 text-white">
-                  <span className="text-4xl font-bold text-[#FF7A5C]">99%</span>
-                  <span className="text-sm text-gray-400 uppercase tracking-widest">رضایت مشتریان</span>
-                </div>
-                <div className="relative h-80 rounded-3xl overflow-hidden shadow-2xl transform hover:rotate-2 transition-transform duration-500">
-                  <Image src="/student1.png" alt="Team" fill className="object-cover" />
-                </div>
-              </div>
-            </div>
+                {/* Main Content: Asymmetric Layout */}
+                <div className="grid lg:grid-cols-2 gap-20 items-center">
+                    
+                    {/* Left Side: Storytelling */}
+                    <motion.div 
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 1.2 }}
+                        className="space-y-10 dir-rtl text-right"
+                    >
+                        <h3 className="text-2xl font-medium text-[#1A1A1A]">اصالت در هر جزئیات</h3>
+                        <p className="text-lg leading-relaxed text-[#555] font-sans font-light">
+                            ما معتقدیم که هر فضا باید منعکس‌کننده روح ساکنان آن باشد. در استودیو ما، سبک کلاسیک با نیازهای مدرن گره خورده است تا فضایی خلق شود که هرگز از مد نمی‌افتد. 
+                            <br /><br />
+                            هدف ما ساده است: خلق محیطی که در آن آرامش و شکوه در کنار هم معنا پیدا می‌کنند. ما به جای دنبال کردن ترندهای زودگذر، به دنبال زیبایی ماندگار هستیم.
+                        </p>
+                        
+                        <div className="pt-6 border-t border-gray-200 flex justify-between items-center dir-ltr">
+                            <div>
+                                <p className="text-3xl font-light italic">12+</p>
+                                <p className="text-[10px] uppercase tracking-widest text-gray-400">Years Excellence</p>
+                            </div>
+                            <div className="h-10 w-px bg-gray-200"></div>
+                            <div>
+                                <p className="text-3xl font-light italic">450</p>
+                                <p className="text-[10px] uppercase tracking-widest text-gray-400">Curated Spaces</p>
+                            </div>
+                            <div className="h-10 w-px bg-gray-200"></div>
+                            <div>
+                                <p className="text-3xl font-light italic">World</p>
+                                <p className="text-[10px] uppercase tracking-widest text-gray-400">Class Design</p>
+                            </div>
+                        </div>
+                    </motion.div>
 
-            {/* نشان شناور (Floating Badge) */}
-            <motion.div 
-              animate={{ y: [0, -20, 0] }}
-              transition={{ duration: 4, repeat: Infinity }}
-              className="absolute -bottom-6 -right-6 bg-white shadow-2xl p-6 rounded-2xl z-20 border border-gray-100"
-            >
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-green-600">
-                  ✔
+                    {/* Right Side: Elegant Image Grid */}
+                    <div className="relative">
+                        <motion.div 
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 1.5 }}
+                            className="aspect-4/5 relative rounded-t-[100px] overflow-hidden shadow-sm"
+                        >
+                            <Image 
+                                src="/student.png" // تصویر اصلی (یک دکوراسیون ملایم و کلاسیک)
+                                alt="Classic Interior"
+                                fill
+                                className="object-cover grayscale-20 hover:grayscale-0 transition-all duration-1000"
+                            />
+                        </motion.div>
+                        
+                        {/* Floating Small Image */}
+                        <motion.div 
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 1.2, delay: 0.5 }}
+                            className="absolute -bottom-10 -left-10 w-48 h-64 hidden md:block border-12 border-white shadow-xl overflow-hidden"
+                        >
+                            <Image 
+                                src="/h3.png" // یک نمای نزدیک از جزئیات کار
+                                alt="Detail Shot"
+                                fill
+                                className="object-cover"
+                            />
+                        </motion.div>
+                    </div>
                 </div>
-                <div>
-                  <p className="text-sm font-bold text-gray-900">Verified Quality</p>
-                  <p className="text-xs text-gray-500">Best Agency 2024</p>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
 
-          {/* بخش سمت راست: محتوا */}
-          <div className="space-y-10">
-            <motion.div 
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="space-y-4"
-            >
-              <h2 className="text-[#FF7A5C] font-bold tracking-[0.2em] uppercase text-sm">
-                About Our Vision
-              </h2>
-              <h3 className="text-4xl md:text-5xl font-black text-gray-900 leading-tight">
-                ما مرزهای بین <span className="text-transparent bg-clip-text bg-linear-to-r from-[#FF7A5C] to-orange-400">تکنولوژی و هنر</span> را جابجا می‌کنیم.
-              </h3>
-              <p className="text-gray-600 text-lg leading-relaxed">
-                تیم ما فراتر از یک آژانس معمولی عمل می‌کند. ما شریک استراتژیک شما در مسیر رشد هستیم. با استفاده از جدیدترین متدهای طراحی جهان، فضایی خلق می‌کنیم که نه تنها زیبا، بلکه کاملاً کارآمد باشد.
-              </p>
-            </motion.div>
-
-            {/* بخش آمار (Grid Stats) */}
-            <div className="grid grid-cols-2 gap-8 border-t border-gray-100 pt-10">
-              {stats.map((stat, index) => (
+                {/* Bottom Quote */}
                 <motion.div 
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  viewport={{ once: true }}
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    transition={{ duration: 2 }}
+                    className="mt-32 border-b border-gray-100 pb-12 text-center"
                 >
-                  <h4 className="text-3xl font-black text-gray-900">{stat.value}</h4>
-                  <p className="text-sm text-gray-500 font-medium uppercase tracking-wider">{stat.label}</p>
+                    <p className="text-xl md:text-2xl italic font-light text-gray-400 max-w-3xl mx-auto">
+                        "Simplicity is the ultimate sophistication."
+                    </p>
                 </motion.div>
-              ))}
             </div>
-
-            <motion.button 
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="group flex items-center gap-4 text-gray-900 font-bold text-lg"
-            >
-              <span className="w-12 h-12 rounded-full border-2 border-gray-200 flex items-center justify-center group-hover:bg-gray-900 group-hover:text-white transition-all">
-                →
-              </span>
-              Learn More About Us
-            </motion.button>
-          </div>
-
-        </div>
-      </div>
-    </section>
-  );
+        </section>
+    );
 };
 
-export default About;
+export default AboutClassic;
