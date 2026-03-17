@@ -73,7 +73,7 @@ const team: TeamMember =[
 
 const Team = () => {
   return (
-    <section className="py-24 bg-white overflow-hidden font-sans">
+    <motion.section  className="py-24 bg-white overflow-hidden font-sans">
       <div className="max-w-7xl mx-auto px-6">
         
         <div className="text-center mb-24">
@@ -124,7 +124,7 @@ const Team = () => {
           ))}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

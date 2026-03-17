@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 
 const AboutClassic = () => {
     return (
-        <section className="relative py-24 bg-[#FCFAFB] text-[#2D2D2D] font-serif overflow-hidden mt-5">
+        <section className="relative py-24  font-serif overflow-hidden mt-12">
             <div className="max-w-6xl mx-auto px-6 lg:px-12">
                 
                 {/* Header Section: Elegance in Simplicity */}
@@ -25,7 +25,7 @@ const AboutClassic = () => {
                         className="text-4xl md:text-6xl font-light italic leading-tight"
                     >
                         The Art of Timeless <br /> 
-                        <span className="font-normal not-italic tracking-tight">Interior Storytelling</span>
+                        <span className="font-normal not-italic tracking-tight text-[#21a07f] border-b border-gray-200 ">Interior Storytelling</span>
                     </motion.h2>
                 </div>
 
@@ -48,17 +48,17 @@ const AboutClassic = () => {
                         
                         <div className="pt-6 border-t border-gray-200 flex justify-between items-center dir-ltr">
                             <div>
-                                <p className="text-3xl font-light italic">12+</p>
+                                <p className="text-3xl font-light italic text-[#21a07f]">12+</p>
                                 <p className="text-[10px] uppercase tracking-widest text-gray-400">Years Excellence</p>
                             </div>
                             <div className="h-10 w-px bg-gray-200"></div>
                             <div>
-                                <p className="text-3xl font-light italic">450</p>
+                                <p className="text-3xl font-light italic text-[#21a07f]">450</p>
                                 <p className="text-[10px] uppercase tracking-widest text-gray-400">Curated Spaces</p>
                             </div>
                             <div className="h-10 w-px bg-gray-200"></div>
                             <div>
-                                <p className="text-3xl font-light italic">World</p>
+                                <p className="text-3xl font-light italic text-[#21a07f]">World</p>
                                 <p className="text-[10px] uppercase tracking-widest text-gray-400">Class Design</p>
                             </div>
                         </div>
@@ -76,7 +76,7 @@ const AboutClassic = () => {
                                 src="/business.png" // تصویر اصلی (یک دکوراسیون ملایم و کلاسیک)
                                 alt="Classic Interior"
                                 fill
-                                className="object-cover grayscale-20 hover:grayscale-0 transition-all duration-1000"
+                                className="object-cover grayscale-20 hover:grayscale-0 transition-all duration-1000  "
                             />
                         </motion.div>
                         

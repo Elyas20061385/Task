@@ -4,22 +4,22 @@ import { FaHtml5, FaCss3Alt, FaReact, FaPython, FaUsers, FaTimes, FaUser, FaEnve
 import { TbBrandJavascript } from 'react-icons/tb';
 import { RiNextjsFill, RiTailwindCssFill } from 'react-icons/ri';
 import { DiDjango } from 'react-icons/di';
+import { motion } from 'framer-motion';
 
 const CourseCard = ({ course, onOpenModal }) => {
   const { icon: Icon, title, description, instructor, rating, price, discountPrice, discount, studentsCount } = course;
 
   return (
-    <div
-      onClick={() => onOpenModal(course)}
-      className="group cursor-pointer rounded-xl overflow-hidden bg-white hover:-translate-y-2 hover:shadow-2xl duration-500 border border-gray-100 flex flex-col h-full text-right"
-      dir="rtl"
-    >
+    <motion.div initial={{ opacity: 0, x: -50 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      onClick={() => onOpenModal(course)} className="group cursor-pointer rounded-xl overflow-hidden bg-white hover:-translate-y-2 hover:shadow-2xl duration-500 border border-gray-100 flex flex-col h-full text-right" dir="rtl" >
       <div className="h-48 bg-[#21a07f] flex items-center justify-center relative overflow-hidden">
         <Icon className="w-24 h-24 text-white opacity-90 group-hover:scale-110 duration-500" />
         <span className="absolute top-4 right-4 bg-white/20 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm font-bold">
           متخصص {title}
         </span>
-      </div> 
+      </div>
 
       <div className="p-6 flex flex-col grow">
         <h3 className="text-gray-800 text-xl font-bold mb-2">{title}</h3>
@@ -47,8 +47,8 @@ const CourseCard = ({ course, onOpenModal }) => {
           <div className="bg-[#21a07f] text-white text-xs font-bold px-2 py-1 rounded-md animate-pulse">{discount}% تخفیف</div>
         </div>
       </div>
-    </div>
-  );  
+    </motion.div>
+  );
 };
 
 const Courses = () => {
