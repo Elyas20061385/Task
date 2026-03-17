@@ -58,7 +58,7 @@ const Portfolio = () => {
             >
               Selected Works
             </motion.span>
-            <h2 className="text-5xl md:text-7xl font-black text-gray-900 tracking-tighter">
+            <h2 className="text-5xl md:text-7xl text-gray-900 tracking-tighter font-bold italic leading-tight">
               Featured <span className="text-[#21a07f]">Projects.</span>
             </h2>
           </div>

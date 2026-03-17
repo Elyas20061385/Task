@@ -13,7 +13,7 @@ const Hero = () => {
     return (
         <section className="relative min-h-screen bg-white overflow-hidden font-sans mt-20">
             {/* دایره‌های رنگی محو در پس‌زمینه برای جذابیت بیشتر */}
-            <div className="absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 w-96 h-96 bg-[#FF7A5C]/10 blur-[120px] rounded-full" />
+            <div className="absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 w-96 h-96 bg-[#21a07f]/10 blur-[120px] rounded-full" />
             <div className="absolute bottom-0 left-0 translate-y-1/4 -translate-x-1/4 w-96 h-96 bg-blue-50 blur-[120px] rounded-full" />
 
             <main className="max-w-7xl mx-auto px-6 md:px-12 pt-20 pb-16 flex flex-col lg:flex-row items-center gap-16 relative z-10">
@@ -62,7 +62,7 @@ const Hero = () => {
                         Next Generation Design
                     </div>
 
-                    <h1 className="text-5xl md:text-7xl font-extrabold leading-[1.1] tracking-tight text-gray-900">
+                    <h1 className="text-5xl md:text-7xl font-bold italic leading-tight text-gray-900">
                         Crafting spaces <br />
                         <span className="text-[#21a07f]">with purpose</span> <br />
                         & personality.
@@ -73,7 +73,7 @@ const Hero = () => {
                     </p>
 
                     <div className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
-                        <button className="bg-[#21a07f] text-white px-10 py-5 rounded-2xl text-lg font-bold  transition-all flex items-center group shadow-xl shadow-[#FF7A5C]/20 active:scale-95">
+                        <button className="bg-[#21a07f] text-white px-10 py-5 rounded-2xl text-lg font-bold  transition-all flex items-center group shadow-xl  active:scale-95">
                             Start a Project
                             <span className="ml-2 group-hover:translate-x-1 transition-transform">→</span>
                         </button>
@@ -94,6 +94,7 @@ const Hero = () => {
                         </div>
                     </div>
                 </motion.div>
+
             </main>
             <Services />
             <Portfolio />

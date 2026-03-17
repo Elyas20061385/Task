@@ -69,8 +69,8 @@ const WhyChooseUs = () => {
                     {item.icon}
                   </div>
                   <div>
-                    <h4 className="text-xl font-bold text-gray-900 mb-1">{item.title}</h4>
-                    <p className="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
+                    <h4 className="text-xl font-medium text-[#1A1A1A] mb-1">{item.title}</h4>
+                    <p className="text-lg leading-relaxed text-[#555] font-sans font-light">{item.desc}</p>
                   </div>
                 </motion.div>
               ))}

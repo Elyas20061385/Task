@@ -52,7 +52,7 @@ const Services = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="text-4xl md:text-6xl font-black text-gray-900 leading-tight"
+              className="text-4xl md:text-6xl text-gray-900 font-bold italic leading-tight"
             >
               Experience the art of <br /> 
               <span className=" bg-clip-text bg-linear-to-r from-gray-900 text-[#21a07f]">Modern Living.</span>
@@ -86,7 +86,7 @@ const Services = () => {
                 {service.icon}
               </div>
 
-              <h3 className="text-xl font-bold text-gray-900 mb-4 group-hover:text-[#21a07f] transition-colors">
+              <h3 className="font-extrabold text-gray-900 mb-4 group-hover:text-[#21a07f] transition-colors text-xs uppercase tracking-[0.3em]">
                 {service.title}
               </h3>
               

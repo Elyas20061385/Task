@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 
 const AboutClassic = () => {
     return (
-        <section className="relative py-24 bg-[#FCFAFB] text-[#2D2D2D] font-serif overflow-hidden">
+        <section className="relative py-24 bg-[#FCFAFB] text-[#2D2D2D] font-serif overflow-hidden mt-5">
             <div className="max-w-6xl mx-auto px-6 lg:px-12">
                 
                 {/* Header Section: Elegance in Simplicity */}
@@ -73,7 +73,7 @@ const AboutClassic = () => {
                             className="aspect-4/5 relative rounded-t-[100px] overflow-hidden shadow-sm"
                         >
                             <Image 
-                                src="/student.png" // تصویر اصلی (یک دکوراسیون ملایم و کلاسیک)
+                                src="/business.png" // تصویر اصلی (یک دکوراسیون ملایم و کلاسیک)
                                 alt="Classic Interior"
                                 fill
                                 className="object-cover grayscale-20 hover:grayscale-0 transition-all duration-1000"
@@ -85,7 +85,7 @@ const AboutClassic = () => {
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 1.2, delay: 0.5 }}
-                            className="absolute -bottom-10 -left-10 w-48 h-64 hidden md:block border-12 border-white shadow-xl overflow-hidden"
+                            className="absolute -bottom-10 -left-10 w-48 h-64 hidden md:block border-12 border-[#21a07f] shadow-xl overflow-hidden"
                         >
                             <Image 
                                 src="/h3.png" // یک نمای نزدیک از جزئیات کار
