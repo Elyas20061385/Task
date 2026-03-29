@@ -5,8 +5,9 @@ import { motion } from 'framer-motion';
 
 const AboutClassic = () => {
     return (
-        <section className="relative py-24  font-serif overflow-hidden mt-12">
-            <div className="max-w-6xl mx-auto px-6 lg:px-12">
+        <section className="relative py-24  font-serif overflow-hidden mt-12 ">
+            
+            <div className="max-w-6xl mx-auto px-6 lg:px-12 ">
                 
                 {/* Header Section: Elegance in Simplicity */}
                 <div className="text-center mb-24">

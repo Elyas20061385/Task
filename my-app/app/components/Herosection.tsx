@@ -13,8 +13,8 @@ const Hero = () => {
     return (
         <section className="relative min-h-screen bg-white overflow-hidden font-sans mt-20">
             {/* دایره‌های رنگی محو در پس‌زمینه برای جذابیت بیشتر */}
-            <div className="absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 w-96 h-96 bg-[#21a07f]/10 blur-[120px] rounded-full" />
-            <div className="absolute bottom-0 left-0 translate-y-1/4 -translate-x-1/4 w-96 h-96 bg-blue-50 blur-[120px] rounded-full" />
+            <div className="absolute top-0 right-0 -translate-y-1/4 translate-x-1/4  w-96 h-96 bg-[#21a07f]/10 blur-[120px] rounded-full" />
+            <div className="absolute bottom-0 left-0 translate-y-1/4 -translate-x-1/4 w-96 h-96 bg-[#21a07f]/10 blur-[120px] rounded-full" />
 
             <main className="max-w-7xl mx-auto px-6 md:px-12 pt-20 pb-16 flex flex-col lg:flex-row items-center gap-16 relative z-10">
                 
