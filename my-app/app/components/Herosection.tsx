@@ -12,13 +12,7 @@ import { motion } from 'framer-motion';
 const Hero = () => {
     return (
         <section className="relative min-h-screen bg-white overflow-hidden font-sans mt-20">
-            {/* دایره‌های رنگی محو در پس‌زمینه برای جذابیت بیشتر */}
-            <div className="absolute top-0 right-0 -translate-y-1/4 translate-x-1/4  w-96 h-96 bg-[#21a07f]/10 blur-[120px] rounded-full" />
-            <div className="absolute bottom-0 left-0 translate-y-1/4 -translate-x-1/4 w-96 h-96 bg-[#21a07f]/10 blur-[120px] rounded-full" />
-
             <main className="max-w-7xl mx-auto px-6 md:px-12 pt-20 pb-16 flex flex-col lg:flex-row items-center gap-16 relative z-10">
-                
-                {/* بخش سمت چپ: گرید تصاویر با انیمیشن */}
                 <motion.div 
                     initial={{ opacity: 0, x: -50 }}
                     animate={{ opacity: 1, x: 0 }}
@@ -46,8 +40,6 @@ const Hero = () => {
                         </motion.div>
                     ))}
                 </motion.div>
-
-                {/* بخش سمت راست: محتوا */}
                 <motion.div 
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -61,23 +53,19 @@ const Hero = () => {
                         </span>
                         Next Generation Design
                     </div>
-
                     <h1 className="text-5xl md:text-7xl font-bold italic leading-tight text-gray-900">
                         Crafting spaces <br />
                         <span className="text-[#21a07f]">with purpose</span> <br />
                         & personality.
                     </h1>
-
                     <p className="text-gray-500 max-w-lg mx-auto lg:mx-0 text-lg leading-relaxed">
                         ما با ترکیب هنر و تکنولوژی، فضایی می‌سازیم که داستانی برای گفتن داشته باشد. پروژه‌های ما بازتابی از هویت و آرزوهای شماست.
                     </p>
-
                     <div className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
                         <button className="bg-[#21a07f] text-white px-10 py-5 rounded-2xl text-lg font-bold  transition-all flex items-center group shadow-xl  active:scale-95">
                             Start a Project
                             <span className="ml-2 group-hover:translate-x-1 transition-transform">→</span>
                         </button>
-                        
                         {/* بخش آمار مشتریان (Social Proof) */}
                         <div className="flex items-center gap-3 pl-4">
                             <div className="flex -space-x-3">
@@ -94,7 +82,6 @@ const Hero = () => {
                         </div>
                     </div>
                 </motion.div>
-
             </main>
             <Services />
             <Portfolio />
@@ -103,7 +90,6 @@ const Hero = () => {
             <StatsAndCTA />
             <Team />
         </section>
-    );
+  );
 };
-
 export default Hero;

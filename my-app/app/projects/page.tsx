@@ -1,9 +1,9 @@
 import React from 'react'
 
-function page() {
+const page = () => {
   return (
     <div>
-      hello from services
+      <h1>ho</h1>
     </div>
   )
 }

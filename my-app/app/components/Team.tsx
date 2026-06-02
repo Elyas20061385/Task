@@ -69,6 +69,13 @@ const team: TeamMember =[
     bgColor: "bg-[#21a07f]",
     shape: "rounded-[80px_20px_80px_20px]", 
   },
+  {
+    name: "Hussain Khashaie",
+    role: "UI Designer",
+    image: "/Hussain.png",
+    bgColor: "bg-[#21a07f]",
+    shape: "rounded-[80px_20px_80px_20px]", 
+  },
 ];
 
 const Team = () => {
