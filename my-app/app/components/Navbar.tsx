@@ -3,7 +3,15 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu,X,ArrowUpRight,Sparkles, Send, Mail,Phone,Globe,} from "lucide-react";
+import { Menu, X, ArrowUpRight, Sparkles, Send, Mail, Phone, Globe } from "lucide-react";
+import { Inter } from "next/font/google";
+
+// Load Inter with desired subsets and display swap
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter", // optional: expose as CSS variable
+});
 
 const WorldClassNavbar = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -14,6 +22,7 @@ const WorldClassNavbar = () => {
     email: "",
     message: "",
   });
+
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
@@ -21,6 +30,7 @@ const WorldClassNavbar = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
   useEffect(() => {
     if (isModalOpen || isMenuOpen) {
       document.body.style.overflow = "hidden";
@@ -31,6 +41,7 @@ const WorldClassNavbar = () => {
       document.body.style.overflow = "";
     };
   }, [isModalOpen, isMenuOpen]);
+
   useEffect(() => {
     const handleEsc = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
@@ -41,6 +52,7 @@ const WorldClassNavbar = () => {
     window.addEventListener("keydown", handleEsc);
     return () => window.removeEventListener("keydown", handleEsc);
   }, []);
+
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "About Us", href: "/about" },
@@ -48,16 +60,19 @@ const WorldClassNavbar = () => {
     { name: "Courses", href: "/courses" },
     { name: "Our Services", href: "/services" },
   ];
+
   const letterVariants = {
     initial: { y: 0 },
     hovered: { y: "-100%" },
   };
+
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Form submitted:", formData);
@@ -65,34 +80,26 @@ const WorldClassNavbar = () => {
     setFormData({ name: "", email: "", message: "" });
     setIsModalOpen(false);
   };
+
   return (
-    <>
+    <div className={`${inter.className} antialiased`}>
       {/* Dynamic World-Class Top Navbar */}
       <nav
-        className={`fixed top-0 left-0 right-0 z-100 transition-all duration-500 px-6 md:px-16 ${scrolled
+        className={`fixed top-0 left-0 right-0 z-100 transition-all duration-500 px-6 md:px-16 ${
+          scrolled
             ? "py-4 bg-white/70 backdrop-blur-xl shadow-[0_20px_50px_rgba(0,0,0,0.03)]"
             : "py-8 bg-transparent"
-          }`}
+        }`}
       >
         <div className="max-w-7xl mx-auto flex items-center justify-between relative bg-[#21a07f] border border-gray-100/80 p-3 pl-4 md:pl-6 rounded-[28px] shadow-[0_24px_60px_-15px_rgba(33,160,127,0.06)] backdrop-blur-xl">
-
           {/* Left: Asymmetric Kinetic Brand Anchor */}
           <div className="flex items-center gap-4">
             <Link href="/" className="relative flex items-center gap-4 group select-none">
-
               {/* World-Class Kinetic Emblem Module */}
               <div className="relative w-14 h-14 flex items-center justify-center">
-
-                {/* Layer 1: Ambient Chroma Flare (Rotates and pulses out of sync) */}
                 <div className="absolute inset-0 bg-linear-to-br from-[#21a07f] via-[#21a07f]/50 to-[#feba0f]/40 rounded-[22px] blur-xl opacity-20 group-hover:opacity-75 transition-all duration-700 ease-[0.25,1,0.5,1] scale-90 group-hover:scale-110 group-hover:-rotate-12" />
-
-                {/* Layer 2: Deconstructed Outer Magnetic Orbit Ring */}
                 <div className="absolute inset-0 border-2 border-dashed border-white/20 group-hover:border-[#feba0f]/60 rounded-3xl transition-all duration-700 ease-[0.25,1,0.5,1] scale-95 group-hover:scale-105 group-hover:rotate-45" />
-
-                {/* Layer 3: Asymmetric Liquifying Transparent Core */}
                 <div className="relative w-full h-full bg-transparent border border-white/10 shadow-[0_8px_20px_rgba(33,160,127,0.04)] rounded-[18px] group-hover:rounded-tr-none group-hover:rounded-bl-3xl group-hover:rounded-br-xl group-hover:rounded-tl-xl flex items-center justify-center overflow-hidden transition-all duration-500 ease-[0.34,1.56,0.64,1] group-hover:shadow-[0_12px_28px_rgba(33,160,127,0.12)]">
-
-                  {/* Internal Graphic Asset */}
                   <div className="relative w-full h-full p-2.5 transition-transform duration-700 ease-out group-hover:scale-110 group-hover:rotate-6">
                     <Image
                       src="/logo1.png"
@@ -102,32 +109,25 @@ const WorldClassNavbar = () => {
                       priority
                     />
                   </div>
-
-                  {/* Chromatic Glass Shimmer Light Pass */}
                   <div className="absolute inset-0 w-full h-full bg-linear-to-tr from-white/0 via-white/20 to-white/0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out" />
                 </div>
               </div>
 
               {/* Avant-Garde Kinetic Typographic System */}
               <div className="hidden sm:flex flex-col text-left pointer-events-none">
-
-                {/* Core Brand Header */}
                 <div className="overflow-hidden relative h-4">
                   <span className="block text-[#feba0f] font-black tracking-[0.15em] text-sm uppercase transition-all duration-500 ease-[0.25,1,0.5,1] group-hover:translate-x-0.5">
                     Amazon<span className="text-[#feba0f] inline-block transition-transform duration-500 group-hover:rotate-360 group-hover:scale-125">.</span>
                   </span>
                 </div>
-
-                {/* Sub-Brand Identity Indicator */}
                 <span className="text-white/80 font-extrabold tracking-[0.25em] text-[9px] uppercase mt-1 transition-all duration-500 ease-[0.25,1,0.5,1] group-hover:text-white group-hover:tracking-[0.38em]">
                   Tech
                 </span>
               </div>
-
             </Link>
           </div>
 
-          {/* Center: Segmented Link Enclosures (Capsule Dock Layout) */}
+          {/* Center: Segmented Link Enclosures */}
           <div className="hidden md:flex items-center bg-white/10 border border-white/10 p-1.5 rounded-[22px] gap-1 shadow-sm backdrop-blur-md">
             {navLinks.map((link) => (
               <Link
@@ -136,10 +136,7 @@ const WorldClassNavbar = () => {
                 className="relative px-5 py-2.5 text-xs font-bold text-white/80 hover:text-white transition-colors rounded-xl group overflow-hidden"
               >
                 <span className="sr-only">{link.name}</span>
-
-                {/* Organic Fluid Fluid Fill Hover Layer */}
                 <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 scale-90 group-hover:scale-100 transition-all duration-300 rounded-xl" />
-
                 <motion.div
                   aria-hidden="true"
                   initial="initial"
@@ -175,7 +172,7 @@ const WorldClassNavbar = () => {
             ))}
           </div>
 
-          {/* Right: Tactile Dynamic CTA & Controls Container */}
+          {/* Right: Tactile Dynamic CTA & Controls */}
           <div className="flex items-center gap-3">
             <button
               onClick={() => setIsModalOpen(true)}
@@ -190,7 +187,6 @@ const WorldClassNavbar = () => {
               <div className="absolute inset-0 w-full h-full bg-linear-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out" />
             </button>
 
-            {/* Mobile Tactile Hamburger Trigger */}
             <button
               onClick={() => setIsMenuOpen(true)}
               className="md:hidden p-3 bg-white/10 border border-white/10 rounded-xl hover:bg-white/20 text-white transition-all active:scale-95 shadow-sm"
@@ -201,8 +197,7 @@ const WorldClassNavbar = () => {
         </div>
       </nav>
 
-
-      {/* Corporate Mobile Navigation Drawer */}
+      {/* Mobile Navigation Drawer */}
       <AnimatePresence>
         {isMenuOpen && (
           <div className="fixed inset-0 z-200 md:hidden">
@@ -266,11 +261,10 @@ const WorldClassNavbar = () => {
         )}
       </AnimatePresence>
 
-      {/* World-Class Studio Bento Grid Modal */}
+      {/* Modal */}
       <AnimatePresence>
         {isModalOpen && (
           <div className="fixed inset-0 z-200 flex items-center justify-center p-4 md:p-6">
-            {/* Smooth Light Matte Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -278,8 +272,6 @@ const WorldClassNavbar = () => {
               onClick={() => setIsModalOpen(false)}
               className="absolute inset-0 bg-gray-900/30 backdrop-blur-2xl"
             />
-
-            {/* Main Framework Block */}
             <motion.div
               initial={{ opacity: 0, y: 30, scale: 0.95 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -287,7 +279,6 @@ const WorldClassNavbar = () => {
               transition={{ type: "spring", duration: 0.5 }}
               className="relative bg-white border border-gray-100 w-full max-w-5xl h-fit max-h-[92vh] rounded-[36px] shadow-[0_50px_100px_rgba(0,0,0,0.12)] overflow-hidden flex flex-col md:flex-row"
             >
-              {/* Global Close Button */}
               <button
                 onClick={() => setIsModalOpen(false)}
                 className="absolute top-6 right-6 z-20 p-2.5 bg-gray-50 hover:bg-gray-100 text-gray-400 hover:text-gray-700 rounded-full transition-all border border-gray-100 backdrop-blur-sm"
@@ -295,16 +286,14 @@ const WorldClassNavbar = () => {
                 <X className="w-5 h-5" />
               </button>
 
-              {/* Left Bento Area: Brand Statement Block (RTL for Persian) */}
+              {/* Left Side */}
               <div className="hidden md:flex flex-col justify-between w-[38%] bg-linear-to-b from-[#21a07f]/5 to-transparent p-8 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-52 h-52 bg-[#21a07f]/10 rounded-full blur-[80px]" />
-
                 <div className="relative z-10 flex flex-col h-full">
                   <div className="inline-flex items-center gap-2 bg-[#21a07f]/10 border border-[#21a07f]/20 text-[#21a07f] px-3 py-1.5 rounded-full text-[10px] tracking-wider uppercase font-bold mb-8 shadow-sm w-fit">
                     <Sparkles className="w-3 h-3" />
                     پروژه‌های هیجان‌انگیز
                   </div>
-
                   <div className="space-y-6" dir="rtl">
                     <h3 className="text-3xl font-black leading-tight text-right">
                       <span className="text-gray-900">بیاین با هم</span>
@@ -322,7 +311,6 @@ const WorldClassNavbar = () => {
                       stable code and digital masterpieces."
                     </p>
                   </div>
-
                   <div className="mt-auto pt-12 space-y-4">
                     <div className="h-px bg-linear-to-r from-transparent via-gray-200 to-transparent" />
                     <div className="space-y-3">
@@ -349,7 +337,7 @@ const WorldClassNavbar = () => {
                 </div>
               </div>
 
-              {/* Right Bento Area: Interaction Channel Form */}
+              {/* Right Side Form */}
               <div className="flex-1 p-6 md:p-10 overflow-y-auto">
                 <div className="max-w-md mx-auto w-full">
                   <div className="mb-8 text-center md:text-left">
@@ -360,7 +348,6 @@ const WorldClassNavbar = () => {
                       ارسال پیام مستقیم
                     </p>
                   </div>
-
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="space-y-2">
                       <label className="block text-[10px] font-bold tracking-[0.2em] uppercase text-gray-400">
@@ -376,7 +363,6 @@ const WorldClassNavbar = () => {
                         placeholder="Alexander Pierce"
                       />
                     </div>
-
                     <div className="space-y-2">
                       <label className="block text-[10px] font-bold tracking-[0.2em] uppercase text-gray-400">
                         Email Address
@@ -391,7 +377,6 @@ const WorldClassNavbar = () => {
                         placeholder="hello@creativemind.com"
                       />
                     </div>
-
                     <div className="space-y-2">
                       <label className="block text-[10px] font-bold tracking-[0.2em] uppercase text-gray-400">
                         Your Project Blueprint
@@ -406,7 +391,6 @@ const WorldClassNavbar = () => {
                         placeholder="Describe your vision, goals, and expectations..."
                       />
                     </div>
-
                     <motion.button
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
@@ -420,7 +404,6 @@ const WorldClassNavbar = () => {
                       <div className="absolute inset-0 w-full h-full bg-linear-to-r from-[#e2a409] to-[#feba0f] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     </motion.button>
                   </form>
-
                   <p className="text-[10px] text-gray-300 text-center mt-6">
                     * All communications are encrypted & confidential
                   </p>
@@ -430,7 +413,7 @@ const WorldClassNavbar = () => {
           </div>
         )}
       </AnimatePresence>
-    </>
+    </div>
   );
 };
 

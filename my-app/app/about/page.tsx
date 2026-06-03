@@ -2,7 +2,19 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import {Search,Compass,Layers,Code2,ShieldCheck, Rocket,Activity,ArrowRight,TrendingUp,ShoppingBag,GraduationCap,Quote,Briefcase,MapPin, Clock,ChevronDown,ChevronUp,CheckCircle2,Users,Award,Heart,FileText,} from "lucide-react";
+import {
+    Search, Compass, Layers, Code2, ShieldCheck, Rocket, Activity,
+    ArrowRight, TrendingUp, ShoppingBag, GraduationCap, Quote, Briefcase,
+    MapPin, Clock, ChevronDown, ChevronUp, CheckCircle2, Users, Award,
+    Heart, FileText
+} from "lucide-react";
+import { Inter } from "next/font/google";
+
+// Load Inter with Latin subset and swap display
+const inter = Inter({
+    subsets: ["latin"],
+    display: "swap",
+});
 
 interface Stage {
     title: string;
@@ -43,7 +55,7 @@ const stages: Stage[] = [
     {
         title: "Discovery & Requirement Analysis",
         description:
-            "ما با درک دقیق اهداف شما شروع می‌کنیم. تحلیل عمیق نیازمندی‌ها، رفتار کاربران و پتانسیل‌های بازار تضمین می‌کند محصولی منطبق بر نیاز واقعی کسب‌وکارتان خلق شود.",
+            "We begin by thoroughly understanding your business goals. Deep analysis of requirements, user behavior, and market potential ensures the creation of a product aligned perfectly with your real business needs.",
         icon: Search,
         color: "bg-[#feba0f]",
         techFocus: "Business Alignment",
@@ -51,7 +63,7 @@ const stages: Stage[] = [
     {
         title: "Planning & Strategy",
         description:
-            "نرم‌افزار عالی به یک معماری مهندسی‌شده نیاز دارد. ما ساختار کلی سیستم، دیتابیس و جدول زمان‌بندی شفاف پروژه را مشخص می‌کنیم تا خروجی نهایی کاملاً مقیاس‌پذیر باشد.",
+            "Excellent software demands a well-engineered architecture. We model the systemic structure, define the database layout, and outline a transparent project schedule to guarantee a highly scalable final product.",
         icon: Compass,
         color: "bg-[#21a07f]",
         techFocus: "System Architecture",
@@ -59,7 +71,7 @@ const stages: Stage[] = [
     {
         title: "UI/UX Design",
         description:
-            "خلق رابط‌های کاربری جذاب، مدرن و کاربرمحور اولویت ماست. از طریق وایرفریم‌ها و پروتوتایپ‌های تعاملی، تجربه‌ای روان و لذت‌بخش برای مخاطبان شما می‌سازیم.",
+            "Crafting highly engaging, modern, and user-centered interfaces is our priority. Through interactive wireframes and functional prototypes, we design a smooth and intuitive digital experience for your audience.",
         icon: Layers,
         color: "bg-[#feba0f]",
         techFocus: "Figma Prototyping",
@@ -67,7 +79,7 @@ const stages: Stage[] = [
     {
         title: "Development",
         description:
-            "کدنویسی تمیز و بهینه با ترکیب قدرتمند فرانت‌اند Next.js برای سرعت خیره‌کننده و بک‌اند امن و مستحکم Django برای مدیریت داده‌ها تحت فرآیند چابک (Agile).",
+            "Writing clean and optimized code using the high-performance Next.js frontend framework for blinding speed, paired with a robust and secure Django backend for efficient data management via Agile practices.",
         icon: Code2,
         color: "bg-[#21a07f]",
         techFocus: "Next.js & Django Stack",
@@ -75,7 +87,7 @@ const stages: Stage[] = [
     {
         title: "Testing & Quality Assurance",
         description:
-            "کیفیت خط قرمز ماست. پلتفرم شما تحت تست‌های اتوماتیک و دستی دقیق قرار می‌گیرد؛ از ارزیابی‌های امنیتی و تست‌های نفوذ گرفته تا رفع کامل باگ‌ها و سنجش سرعت.",
+            "Quality is our absolute red line. Your platform undergoes rigorous automated and manual testing, covering deep security assessments, vulnerability scans, comprehensive bug fixes, and speed benchmarking.",
         icon: ShieldCheck,
         color: "bg-[#feba0f]",
         techFocus: "Security & QA Audits",
@@ -83,7 +95,7 @@ const stages: Stage[] = [
     {
         title: "Deployment",
         description:
-            "انتقال محصول به سرورهای زنده با بالاترین سطح امنیت. با استفاده از پایپ‌لاین‌های مدرن CI/CD، نرم‌افزار شما بدون حتی یک دقیقه قطعی یا Downtime مستقر می‌شود.",
+            "Transitioning your product to live production servers with maximum security standards. Utilizing modern CI/CD automation pipelines, we deploy your system with zero service interruption or downtime.",
         icon: Rocket,
         color: "bg-[#21a07f]",
         techFocus: "CI/CD & Cloud Launch",
@@ -91,7 +103,7 @@ const stages: Stage[] = [
     {
         title: "Maintenance & Support",
         description:
-            "پشتیبانی ما با لانچ محصول تمام نمی‌شود. مانیتورینگ مداوم، آپدیت‌های امنیتی دوره‌ای و بهینه‌سازی کارایی پلتفرم به صورت دائمی انجام می‌شود تا همگام با رشد شما توسعه یابد.",
+            "Our partnership doesn't end at product launch. Continuous performance monitoring, periodic security patches, and persistent server optimizations are maintained to scale fluidly alongside your growing company.",
         icon: Activity,
         color: "bg-[#feba0f]",
         techFocus: "Ongoing Optimization",
@@ -197,20 +209,20 @@ const openPositions: Job[] = [
         location: "Remote / Hybrid",
         experience: "4+ Years",
         responsibilities: [
-            "توسعه و بهینه‌سازی پروژه‌های فرانت‌اند با استفاده از Next.js و React",
-            "همکاری نزدیک با تیم طراحی برای پیاده‌سازی UI/UXهای تعاملی و انیمیشن‌های روان",
-            "بهینه‌سازی کارایی برنامه (Web Vitals) و رندرینگ سمت سرور (SSR/ISR)",
-            "نوشتن کدهای تمیز، ماژولار و قابل تست با TypeScript",
+            "Develop and optimize frontend projects using Next.js and React",
+            "Collaborate closely with the design team to implement interactive UI/UX and smooth animations",
+            "Optimize application performance (Web Vitals) and server-side rendering (SSR/ISR)",
+            "Write clean, modular, testable code with TypeScript",
         ],
         requiredSkills: [
-            "تسلط کامل بر Next.js، React و TypeScript",
-            "تجربه کار حرفه‌ای با Tailwind CSS و کتابخانه‌های انیمیشن مانند Framer Motion",
-            "درک عمیق از معماری‌های ای‌پی‌آی (RESTful / GraphQL)",
-            "آشنایی کامل با ابزارهای مدیریت استیت و Git",
+            "Strong mastery of Next.js, React, and TypeScript",
+            "Professional experience with Tailwind CSS and animation libraries like Framer Motion",
+            "Deep understanding of API architectures (RESTful / GraphQL)",
+            "Solid familiarity with state management tools and Git",
         ],
         preferredQualifications: [
-            "تجربه کار با سیستم‌های طراحی (Design Systems)",
-            "آشنایی با اصول سئو تکنیکال در فرانت‌اند",
+            "Experience with Design Systems",
+            "Knowledge of technical SEO principles on the frontend",
         ],
     },
     {
@@ -221,20 +233,20 @@ const openPositions: Job[] = [
         location: "Remote",
         experience: "3+ Years",
         responsibilities: [
-            "طراحی و توسعه APIهای امن و سریع با استفاده از Django REST Framework",
-            "مدیریت، مدل‌سازی و بهینه‌سازی پایگاه‌های داده توزیع‌شده (PostgreSQL)",
-            "پیاده‌سازی تسک‌های پس‌زمینه و ناهمگام با استفاده از Celery و Redis",
-            "تضمین امنیت داده‌ها، حریم خصوصی کاربران و یکپارچگی سیستم",
+            "Design and develop secure, high-performance APIs using Django REST Framework",
+            "Manage, model, and optimize distributed databases (PostgreSQL)",
+            "Implement background and asynchronous tasks using Celery and Redis",
+            "Ensure data security, user privacy, and system integrity",
         ],
         requiredSkills: [
-            "تسلط عمیق بر زبان Python و فریم‌ورک Django / DRF",
-            "پایه قوی در طراحی پایگاه داده ریلی و بهینه‌سازی کوئری‌ها",
-            "تجربه کار با داکر (Docker) و پایپ‌لاین‌های CI/CD",
-            "آشنایی با معماری میکروسرویس و الگوهای طراحی نرم‌افزار",
+            "Deep proficiency in Python and Django / DRF framework",
+            "Strong foundation in relational database design and query optimization",
+            "Experience with Docker and CI/CD pipelines",
+            "Familiarity with microservices architecture and software design patterns",
         ],
         preferredQualifications: [
-            "تجربه کار با سیستم‌های پیام‌رسانی مانند RabbitMQ یا Kafka",
-            "سابقه توسعه پلتفرم‌های ابری در مقیاس بزرگ",
+            "Experience with messaging systems like RabbitMQ or Kafka",
+            "Track record of developing large-scale cloud platforms",
         ],
     },
     {
@@ -245,19 +257,19 @@ const openPositions: Job[] = [
         location: "Hybrid (Tehran Office)",
         experience: "2+ Years",
         responsibilities: [
-            "تحقیق، مستندسازی رفتار کاربران و ساخت وایرفریم‌ها و یوزرفلوهای منطقی",
-            "طراحی رابط‌های کاربری مدرن، خلاقانه و مینیمال برای وب و اپلیکیشن",
-            "ساخت پروتوتایپ‌های تعاملی با سطح جزئیات بالا جهت تست و ارزیابی",
-            "همکاری با تیم مهندسی برای اطمینان از پیاده‌سازی دقیق طرح‌ها",
+            "Research, document user behavior, and create wireframes and logical user flows",
+            "Design modern, creative, minimalist UI for web and applications",
+            "Build high-fidelity interactive prototypes for testing and evaluation",
+            "Collaborate with engineering to ensure accurate implementation of designs",
         ],
         requiredSkills: [
-            "تسلط کامل بر ابزار Figma و ساخت کامپوننت‌های داینامیک",
-            "درک عمیق از تئوری رنگ، تایپوگرافی و سیستم‌های شبکه‌بندی (Grid)",
-            "توانایی تفکر حل مسئله و تبدیل نیازمندی‌های پیچیده به مسیرهای ساده",
+            "Complete mastery of Figma and dynamic components",
+            "Deep understanding of color theory, typography, and grid systems",
+            "Problem-solving mindset and ability to turn complex requirements into simple paths",
         ],
         preferredQualifications: [
-            "آشنایی اولیه با ساختار HTML/CSS جهت درک بهتر محدودیت‌های فنی فرانت‌اند",
-            "داشتن پورتفولیوی آنلاین و مستند از پروژه‌های موفق",
+            "Basic familiarity with HTML/CSS structure to better understand frontend technical constraints",
+            "Online portfolio showcasing successful projects",
         ],
     },
 ];
@@ -265,31 +277,31 @@ const openPositions: Job[] = [
 const perks = [
     {
         icon: <Clock className="w-6 h-6 text-[#21a07f]" />,
-        title: "ساعت کاری منعطف",
-        desc: "تعادل بین کار و زندگی اولویت ماست؛ زمانت را خودت مدیریت کن.",
+        title: "Flexible Working Hours",
+        desc: "Work-life balance is our priority; manage your own time.",
     },
     {
         icon: <Rocket className="w-6 h-6 text-[#feba0f]" />,
-        title: "مسیر رشد و بودجه آموزشی",
-        desc: "کمک هزینه خرید کتاب، دوره‌های آموزشی و شرکت در کنفرانس‌های تخصصی.",
+        title: "Growth Path & Education Budget",
+        desc: "Budget for purchasing books, courses, and attending specialized conferences.",
     },
     {
         icon: <Users className="w-6 h-6 text-[#21a07f]" />,
-        title: "فرهنگ چابک و شفاف",
-        desc: "توسعه مبتنی بر متدولوژی Agile بدون بروکراسی‌های پیچیده اداری.",
+        title: "Agile & Transparent Culture",
+        desc: "Agile-based development without complex administrative bureaucracy.",
     },
     {
         icon: <Award className="w-6 h-6 text-[#feba0f]" />,
-        title: "پروژه‌های بین‌المللی",
-        desc: "فرصت چالش و کار روی محصولات مقیاس بزرگ جهانی با آخرین تک‌استک روز.",
+        title: "International Projects",
+        desc: "Opportunity to work on global-scale products with the latest cutting-edge stack.",
     },
 ];
 
 const steps = [
-    { no: "۰۱", title: "ارسال رزومه و پورتفولیو", desc: "بررسی اولیه مدارک، سوابق کاری و نمونه پروژه‌های قبلی شما." },
-    { no: "۰۲", title: "مصاحبه فنی اولیه", desc: "گفتگوی آنلاین پیرامون مهارت‌ها، چالش‌های مهندسی و دانش پایه‌ای." },
-    { no: "۰۳", title: "تسک ارزیابی (اختیاری)", desc: "یک سناریوی واقعی کوچک برای سنجش نحوه کدنویسی و حل مسئله شما." },
-    { no: "۰۴", title: "مصاحبه فرهنگی و پیشنهاد", desc: "آشنایی با تیم، همسویی با ارزش‌های شرکت و نهایتاً صدور آفر رسمی." },
+    { no: "01", title: "Submit Resume & Portfolio", desc: "Initial review of your documents, work history, and previous projects." },
+    { no: "02", title: "Initial Technical Interview", desc: "Online conversation about your skills, engineering challenges, and foundational knowledge." },
+    { no: "03", title: "Assessment Task (Optional)", desc: "A small real-world scenario to evaluate your coding and problem-solving approach." },
+    { no: "04", title: "Cultural Interview & Offer", desc: "Meet the team, align with company values, and finally receive an official offer." },
 ];
 
 const About = () => {
@@ -308,9 +320,9 @@ const About = () => {
     };
 
     return (
-        <>
-            {/*  SECTION 1 */}
-            <section className="relative py-24 font-serif overflow-hidden mt-12">
+        <div className={`${inter.className} antialiased`}>
+            {/* SECTION 1 */}
+            <section className="relative py-24 overflow-hidden mt-12">
                 <div className="max-w-6xl mx-auto px-6 lg:px-12">
                     <div className="text-center mb-24">
                         <motion.span
@@ -327,10 +339,10 @@ const About = () => {
                             whileInView={{ opacity: 1 }}
                             transition={{ duration: 1.5, delay: 0.2 }}
                             viewport={{ once: true }}
-                            className="text-4xl md:text-6xl font-light italic leading-tight"
+                            className="text-4xl md:text-6xl"
                         >
                             The Art of Timeless <br />
-                            <span className="font-normal not-italic tracking-tight text-[#21a07f] border-b border-gray-200">
+                            <span className=" font-bold text-[#21a07f] border-b border-gray-200">
                                 Interior Storytelling
                             </span>
                         </motion.h2>
@@ -342,16 +354,16 @@ const About = () => {
                             whileInView={{ opacity: 1, x: 0 }}
                             transition={{ duration: 1.2 }}
                             viewport={{ once: true }}
-                            className="space-y-10 text-right"
+                            className="space-y-10 text-left"
                         >
-                            <h3 className="text-2xl font-medium text-[#1A1A1A]">اصالت در هر جزئیات</h3>
-                            <p className="text-lg leading-relaxed text-[#555] font-sans font-light">
-                                ما معتقدیم که هر فضا باید منعکس‌کننده روح ساکنان آن باشد. در استودیو ما، سبک
-                                کلاسیک با نیازهای مدرن گره خورده است تا فضایی خلق شود که هرگز از مد نمی‌افتد.
+                            <h3 className="text-2xl font-medium text-[#1A1A1A]">Authenticity in Every Detail</h3>
+                            <p className="text-lg leading-relaxed text-[#555] font-light">
+                                We believe that every space should reflect the soul of its inhabitants. In our studio,
+                                classic style is intertwined with modern needs to create an environment that never goes out of style.
                                 <br />
                                 <br />
-                                هدف ما ساده است: خلق محیطی که در آن آرامش و شکوه در کنار هم معنا پیدا می‌کنند.
-                                ما به جای دنبال کردن ترندهای زودگذر، به دنبال زیبایی ماندگار هستیم.
+                                Our goal is simple: to create a setting where serenity and elegance find meaning together.
+                                Instead of following fleeting trends, we pursue timeless beauty.
                             </p>
                             <div className="pt-6 border-t border-gray-200 flex justify-between items-center">
                                 <div>
@@ -420,7 +432,7 @@ const About = () => {
             </section>
 
             {/* SECTION 2 METHODOLOGY */}
-            <section className="py-24 bg-[#F8F9FA] relative overflow-hidden" dir="rtl">
+            <section className="py-24 bg-[#F8F9FA] relative overflow-hidden">
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,var(--tw-gradient-stops))] from-orange-50/50 via-transparent to-transparent z-0" />
                 <div className="max-w-7xl mx-auto px-6 relative z-10">
                     <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
@@ -438,7 +450,7 @@ const About = () => {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.1 }}
                                 viewport={{ once: true }}
-                                className="text-4xl md:text-6xl text-gray-900 font-bold italic leading-tight"
+                                className="text-4xl md:text-6xl text-gray-900 font-bold "
                             >
                                 Engineering the art of <br />
                                 <span className="bg-linear-to-r from-gray-900 to-[#21a07f] bg-clip-text text-transparent">
@@ -452,8 +464,8 @@ const About = () => {
                             viewport={{ once: true }}
                             className="text-gray-500 text-lg max-w-sm pb-2 leading-relaxed"
                         >
-                            ما فرآیند مهندسی نرم‌افزار را با ساختارهای چابک تلفیق می‌کنیم تا پلتفرمی امن،
-                            سریع و مقیاس‌پذیر برای اهداف تجاری شما خلق کنیم.
+                            We integrate software engineering practices with agile frameworks to build secure,
+                            fast, and scalable platforms tailored to your business goals.
                         </motion.p>
                     </div>
 
@@ -471,7 +483,7 @@ const About = () => {
                                     className="group relative bg-white p-8 rounded-4xl shadow-sm border border-gray-100 hover:shadow-2xl hover:shadow-[#21a07f]/10 transition-all duration-500 overflow-hidden flex flex-col justify-between"
                                 >
                                     <div>
-                                        <div className="absolute top-0 left-0 w-24 h-24 bg-gray-50 rounded-br-[100px] -z-10 group-hover:bg-[#21a07f]/5 transition-colors" />
+                                        <div className="absolute top-0 right-0 w-24 h-24 bg-gray-50 rounded-bl-[100px] -z-10 group-hover:bg-[#21a07f]/5 transition-colors" />
                                         <div className="flex justify-between items-start mb-8">
                                             <div
                                                 className={`w-16 h-16 ${stage.color} text-white rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-500`}
@@ -483,14 +495,14 @@ const About = () => {
                                             </span>
                                         </div>
                                         <h3 className="font-extrabold text-gray-900 mb-4 group-hover:text-[#21a07f] transition-colors text-sm uppercase tracking-wide">
-                                            <span className="text-[#21a07f]/40 font-mono ml-2 text-xs">0{index + 1}.</span>
+                                            <span className="text-[#21a07f]/40 font-mono mr-2 text-xs">0{index + 1}.</span>
                                             {stage.title}
                                         </h3>
                                         <p className="text-gray-500 leading-relaxed mb-8 text-sm text-justify">{stage.description}</p>
                                     </div>
                                     <button className="flex items-center gap-2 text-sm font-bold text-gray-900 group/btn mt-auto">
-                                        جزئیات بیشتر
-                                        <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center group-hover/btn:bg-[#feba0f] group-hover/btn:text-white transition-all transform rotate-180">
+                                        Learn More
+                                        <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center group-hover/btn:bg-[#feba0f] group-hover/btn:text-white transition-all transform">
                                             <ArrowRight className="w-4 h-4" />
                                         </div>
                                     </button>
@@ -506,7 +518,7 @@ const About = () => {
                         className="mt-20 p-8 rounded-[40px] bg-[#21a07f] flex flex-col md:flex-row items-center justify-between gap-8"
                     >
                         <div className="flex items-center gap-6">
-                            <div className="flex -space-x-4 space-x-reverse">
+                            <div className="flex -space-x-4">
                                 {[1, 2, 3, 4].map((i) => (
                                     <div
                                         key={i}
@@ -523,17 +535,17 @@ const About = () => {
                                 ))}
                             </div>
                             <p className="text-white font-medium text-lg">
-                                آماده‌اید پروژه خود را با استانداردهای مدرن پیاده‌سازی کنید؟
+                                Ready to build your project following modern engineering standards?
                             </p>
                         </div>
                         <button className="bg-white text-gray-900 px-8 py-4 rounded-2xl font-bold hover:bg-[#feba0f] hover:text-white transition-all active:scale-95 whitespace-nowrap">
-                            درخواست مشاوره فنی
+                            Request Technical Consultation
                         </button>
                     </motion.div>
                 </div>
             </section>
 
-            {/*SECTION 3: SUCCESS STORIES */}
+            {/* SECTION 3: SUCCESS STORIES */}
             <section className="py-24 bg-[#F8F9FA] relative overflow-hidden">
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,var(--tw-gradient-stops))] from-orange-50/50 via-transparent to-transparent z-0" />
                 <div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -553,7 +565,7 @@ const About = () => {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.1 }}
                                 viewport={{ once: true }}
-                                className="text-4xl md:text-6xl text-gray-900 font-bold italic leading-tight"
+                                className="text-4xl md:text-6xl text-gray-900 font-bold "
                             >
                                 Real Challenges. <br />
                                 <span className="bg-linear-to-r from-gray-900 to-[#21a07f] bg-clip-text text-transparent">
@@ -565,10 +577,10 @@ const About = () => {
                             initial={{ opacity: 0 }}
                             whileInView={{ opacity: 1 }}
                             viewport={{ once: true }}
-                            className="text-gray-500 text-lg max-w-sm pb-2 leading-relaxed text-right"
+                            className="text-gray-500 text-lg max-w-sm pb-2 leading-relaxed"
                         >
-                            ببینید چگونه دانش فنی مهندسان ما در فرانت‌اند Next.js و بک‌اند Django،
-                            چالش‌های پیچیده کسب‌وکارها را به فرصت‌های رشد تبدیل کرده است.
+                            See how our engineers' technical expertise in Next.js frontend and Django backend has
+                            transformed complex business challenges into growth opportunities.
                         </motion.p>
                     </div>
 
@@ -579,8 +591,8 @@ const About = () => {
                                 key={study.id}
                                 onClick={() => setActiveTab(study.id)}
                                 className={`flex items-center gap-3 px-6 py-3.5 rounded-2xl font-bold text-sm transition-all duration-300 ${activeTab === study.id
-                                        ? "bg-[#21a07f] text-white shadow-lg shadow-[#21a07f]/20"
-                                        : "bg-white text-gray-600 hover:bg-gray-100 border border-gray-200/60"
+                                    ? "bg-[#21a07f] text-white shadow-lg shadow-[#21a07f]/20"
+                                    : "bg-white text-gray-600 hover:bg-gray-100 border border-gray-200/60"
                                     }`}
                             >
                                 <span className={activeTab === study.id ? "text-white" : "text-[#21a07f]"}>
@@ -611,7 +623,7 @@ const About = () => {
                                         {activeCase.title}
                                     </h3>
                                     <p className="text-gray-400 text-sm mt-2 font-medium">
-                                        نوع پروژه: {activeCase.type}
+                                        Project Type: {activeCase.type}
                                     </p>
                                 </div>
 
@@ -619,7 +631,7 @@ const About = () => {
                                 <div className="space-y-2">
                                     <h4 className="text-lg font-bold text-gray-800 flex items-center gap-2">
                                         <span className="w-1 h-5 bg-[#21a07f] rounded-full" />
-                                        بررسی اجمالی پروژه (Project Overview)
+                                        Project Overview
                                     </h4>
                                     <p className="text-gray-600 leading-relaxed">{activeCase.overview}</p>
                                 </div>
@@ -628,7 +640,7 @@ const About = () => {
                                 <div className="space-y-2">
                                     <h4 className="text-lg font-bold text-gray-800 flex items-center gap-2">
                                         <span className="w-1 h-5 bg-[#21a07f] rounded-full" />
-                                        چالش اصلی (The Challenge)
+                                        The Challenge
                                     </h4>
                                     <p className="text-gray-600 leading-relaxed">{activeCase.challenge}</p>
                                 </div>
@@ -637,7 +649,7 @@ const About = () => {
                                 <div className="space-y-2">
                                     <h4 className="text-lg font-bold text-gray-800 flex items-center gap-2">
                                         <span className="w-1 h-5 bg-[#21a07f] rounded-full" />
-                                        راهکار ما (The Solution)
+                                        Our Solution
                                     </h4>
                                     <p className="text-gray-600 leading-relaxed">{activeCase.solution}</p>
                                 </div>
@@ -646,7 +658,7 @@ const About = () => {
                                 <div className="space-y-2">
                                     <h4 className="text-lg font-bold text-gray-800 flex items-center gap-2">
                                         <span className="w-1 h-5 bg-[#21a07f] rounded-full" />
-                                        روند توسعه و پیاده‌سازی (Process)
+                                        Development & Implementation Process
                                     </h4>
                                     <p className="text-gray-600 leading-relaxed">{activeCase.process}</p>
                                 </div>
@@ -655,7 +667,7 @@ const About = () => {
                                 <div className="space-y-2">
                                     <h4 className="text-lg font-bold text-gray-800 flex items-center gap-2">
                                         <span className="w-1 h-5 bg-[#21a07f] rounded-full" />
-                                        تکنولوژی‌های استفاده شده
+                                        Technologies Used
                                     </h4>
                                     <div className="flex flex-wrap gap-2">
                                         {activeCase.technologies.map((tech) => (
@@ -675,7 +687,7 @@ const About = () => {
                                 {/* Metrics Card */}
                                 <div className="bg-linear-to-br from-[#21a07f]/5 to-transparent p-6 rounded-2xl border border-[#21a07f]/20">
                                     <h4 className="text-sm font-bold uppercase tracking-wider text-[#21a07f] mb-4">
-                                        نتایج و میزان اثربخشی
+                                        Results & Impact
                                     </h4>
                                     <div className="space-y-4">
                                         {activeCase.metrics.map((metric, idx) => (
@@ -706,7 +718,7 @@ const About = () => {
 
                                 {/* Call to Action */}
                                 <button className="w-full bg-[#21a07f] text-white py-4 rounded-2xl font-bold flex items-center justify-center gap-2 hover:bg-[#1a8a6b] transition-all group">
-                                    <span>آیا چالشی مشابه دارید؟ شروع همکاری با تیم ما</span>
+                                    <span>Have a similar challenge? Start collaborating with our team</span>
                                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                                 </button>
                             </div>
@@ -715,8 +727,8 @@ const About = () => {
                 </div>
             </section>
 
-            {/* ========== SECTION 4: CAREERS (Job Openings) ========== */}
-            <section className="py-24 bg-[#F8F9FA] relative overflow-hidden" dir="rtl">
+            {/* SECTION 4: CAREERS (Job Openings) */}
+            <section className="py-24 bg-[#F8F9FA] relative overflow-hidden">
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,var(--tw-gradient-stops))] from-teal-50/40 via-transparent to-transparent z-0" />
                 <div className="max-w-7xl mx-auto px-6 relative z-10">
                     {/* Header */}
@@ -735,7 +747,7 @@ const About = () => {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.1 }}
                                 viewport={{ once: true }}
-                                className="text-4xl md:text-6xl text-gray-900 font-bold italic leading-tight"
+                                className="text-4xl md:text-6xl text-gray-900 font-bold "
                             >
                                 Build your career. <br />
                                 <span className="bg-linear-to-r from-gray-900 to-[#21a07f] bg-clip-text text-transparent">
@@ -747,11 +759,11 @@ const About = () => {
                             initial={{ opacity: 0 }}
                             whileInView={{ opacity: 1 }}
                             viewport={{ once: true }}
-                            className="text-gray-500 text-lg max-w-md pb-2 leading-relaxed text-justify"
+                            className="text-gray-500 text-lg max-w-md pb-2 leading-relaxed"
                         >
-                            ما معتقدیم نرم‌افزارهای فوق‌العاده توسط تیم‌های شاد، خلاق و پویا ساخته می‌شوند. در
-                            شرکت ما، فضا برای نوآوری، یادگیری مداوم و به چالش کشیدن محدودیت‌های مهندسی همیشه
-                            مهیاست.
+                            We believe exceptional software is built by happy, creative, and dynamic teams.
+                            At our company, space for innovation, continuous learning, and challenging engineering boundaries
+                            is always available.
                         </motion.p>
                     </div>
 
@@ -759,7 +771,7 @@ const About = () => {
                     <div className="mb-24">
                         <h3 className="text-xl font-extrabold text-gray-900 mb-8 flex items-center gap-2">
                             <Heart className="w-5 h-5 text-[#21a07f] fill-[#21a07f]/10" />
-                            چرا کار کردن با ما متفاوت است؟
+                            Why is working with us different?
                         </h3>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                             {perks.map((perk, i) => (
@@ -772,7 +784,7 @@ const About = () => {
                                         {perk.icon}
                                     </div>
                                     <h4 className="font-bold text-gray-900 mb-2 text-base">{perk.title}</h4>
-                                    <p className="text-gray-500 text-sm leading-relaxed text-justify">{perk.desc}</p>
+                                    <p className="text-gray-500 text-sm leading-relaxed">{perk.desc}</p>
                                 </motion.div>
                             ))}
                         </div>
@@ -783,7 +795,7 @@ const About = () => {
                         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
                             <h3 className="text-xl font-extrabold text-gray-900 flex items-center gap-2">
                                 <Briefcase className="w-5 h-5 text-[#21a07f]" />
-                                موقعیت‌های شغلی فعال
+                                Active Job Openings
                             </h3>
                             <div className="flex gap-2 p-1.5 bg-gray-200/60 rounded-xl text-xs font-bold">
                                 {["All", "Engineering", "Design"].map((cat) => (
@@ -794,11 +806,11 @@ const About = () => {
                                             setExpandedJob(null);
                                         }}
                                         className={`px-4 py-2 rounded-lg transition-all ${activeCategory === cat
-                                                ? "bg-white text-gray-900 shadow-sm"
-                                                : "text-gray-500 hover:text-gray-900"
+                                            ? "bg-white text-gray-900 shadow-sm"
+                                            : "text-gray-500 hover:text-gray-900"
                                             }`}
                                     >
-                                        {cat === "All" ? "همه موقعیت‌ها" : cat}
+                                        {cat === "All" ? "All Positions" : cat}
                                     </button>
                                 ))}
                             </div>
@@ -829,7 +841,7 @@ const About = () => {
                                                     <MapPin className="w-3 h-3" /> {job.location}
                                                 </span>
                                                 <span className="flex items-center gap-1.5 bg-gray-50 border border-gray-100 px-2.5 py-1 rounded-md">
-                                                    سابقه کار: {job.experience}
+                                                    Experience: {job.experience}
                                                 </span>
                                             </div>
                                         </div>
@@ -851,9 +863,9 @@ const About = () => {
                                                 <div>
                                                     <h5 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
                                                         <CheckCircle2 className="w-4 h-4 text-[#21a07f]" />
-                                                        وظایف و مسئولیت‌ها:
+                                                        Responsibilities:
                                                     </h5>
-                                                    <ul className="list-disc list-inside space-y-2 text-gray-600 text-sm pr-4">
+                                                    <ul className="list-disc list-inside space-y-2 text-gray-600 text-sm pl-4">
                                                         {job.responsibilities.map((res, i) => (
                                                             <li key={i}>{res}</li>
                                                         ))}
@@ -864,9 +876,9 @@ const About = () => {
                                                 <div>
                                                     <h5 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
                                                         <FileText className="w-4 h-4 text-[#feba0f]" />
-                                                        مهارت‌های تخصصی مورد نیاز:
+                                                        Required Technical Skills:
                                                     </h5>
-                                                    <ul className="list-disc list-inside space-y-2 text-gray-600 text-sm pr-4">
+                                                    <ul className="list-disc list-inside space-y-2 text-gray-600 text-sm pl-4">
                                                         {job.requiredSkills.map((skill, i) => (
                                                             <li key={i}>{skill}</li>
                                                         ))}
@@ -878,9 +890,9 @@ const About = () => {
                                                     <div>
                                                         <h5 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
                                                             <Award className="w-4 h-4 text-[#21a07f]" />
-                                                            امتیازهای مثبت (Nice to Have):
+                                                            Nice to Have:
                                                         </h5>
-                                                        <ul className="list-disc list-inside space-y-2 text-gray-600 text-sm pr-4">
+                                                        <ul className="list-disc list-inside space-y-2 text-gray-600 text-sm pl-4">
                                                             {job.preferredQualifications.map((pref, i) => (
                                                                 <li key={i}>{pref}</li>
                                                             ))}
@@ -891,10 +903,10 @@ const About = () => {
                                                 {/* CTA */}
                                                 <div className="pt-4">
                                                     <p className="text-xs text-gray-400 mb-3">
-                                                        ارسال رزومه به همراه درج پورتفولیو یا گیت‌هاب الزامی است.
+                                                        Please submit your resume along with your portfolio or GitHub.
                                                     </p>
                                                     <button className="bg-[#21a07f] text-white px-6 py-2.5 rounded-xl font-bold text-sm hover:bg-[#1a8a6b] transition-colors">
-                                                        ارسال رزومه برای این موقعیت
+                                                        Apply for this position
                                                     </button>
                                                 </div>
                                             </div>
@@ -909,7 +921,7 @@ const About = () => {
                     <div className="mb-24">
                         <h3 className="text-xl font-extrabold text-gray-900 mb-8 flex items-center gap-2">
                             <Rocket className="w-5 h-5 text-[#21a07f]" />
-                            مراحل فرآیند استخدام و جذب نیرو
+                            Recruitment Process Steps
                         </h3>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                             {steps.map((step, i) => (
@@ -920,9 +932,9 @@ const About = () => {
                                 >
                                     <div className="text-3xl font-black text-[#21a07f]/20 mb-3">{step.no}</div>
                                     <h4 className="font-bold text-gray-900 mb-2">
-                                        {i + 1}. {step.title}
+                                        {step.title}
                                     </h4>
-                                    <p className="text-gray-500 text-sm leading-relaxed text-justify">{step.desc}</p>
+                                    <p className="text-gray-500 text-sm leading-relaxed">{step.desc}</p>
                                 </motion.div>
                             ))}
                         </div>
@@ -936,19 +948,18 @@ const About = () => {
                         className="p-8 md:p-12 rounded-[40px] bg-[#21a07f] flex flex-col lg:flex-row items-center justify-between gap-8 text-white relative overflow-hidden"
                     >
                         <div>
-                            <h4 className="text-2xl font-bold mb-2">موقعیت مد نظرتان را پیدا نکردید؟</h4>
+                            <h4 className="text-2xl font-bold mb-2">Didn't find the position you're looking for?</h4>
                             <p className="opacity-90">
-                                ما همیشه مشتاق آشنایی با مهندسان، طراحان و مدیران محصول خلاق و بااستعداد هستیم. رزومه خود
-                                را به صورت عمومی ارسال کنید.
+                                We are always eager to meet talented engineers, designers, and product managers. Submit your resume as a general application.
                             </p>
                         </div>
                         <button className="bg-white text-gray-900 px-8 py-4 rounded-2xl font-bold hover:bg-[#feba0f] hover:text-white transition-all whitespace-nowrap">
-                            ارسال رزومه عمومی (General Application)
+                            Submit General Application
                         </button>
                     </motion.div>
                 </div>
             </section>
-        </>
+        </div>
     );
 };
 

@@ -2,29 +2,36 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Palette, Home, Layout, Sparkles, ArrowRight } from 'lucide-react';
+import { Inter } from "next/font/google";
+
+// Load Inter with Latin subset and swap display
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+});
 
 const services = [
   {
     title: "Interior Design",
-    description: "طراحی داخلی منحصر به فرد با تمرکز بر تعادل بین زیبایی‌شناسی و کارایی فضا.",
+    description: "Unique interior design focused on balancing aesthetics with spatial functionality.",
     icon: <Home className="w-8 h-8" />,
     color: "bg-[#feba0f]"
   },
   {
     title: "Color Consultation",
-    description: "انتخاب پالت‌های رنگی هوشمندانه که با روحیه و هویت برند یا خانه شما همخوانی دارد.",
+    description: "Smart color palette selection that matches the mood and identity of your brand or home.",
     icon: <Palette className="w-8 h-8" />,
     color: "bg-[#21a07f]"
   },
   {
     title: "Space Planning",
-    description: "بهینه‌سازی هر سانتی‌متر از فضای شما برای ایجاد جریان حرکت و راحتی بیشتر.",
+    description: "Optimizing every centimeter of your space to create better flow and maximum comfort.",
     icon: <Layout className="w-8 h-8" />,
     color: "bg-[#feba0f]"
   },
   {
     title: "Luxury Styling",
-    description: "افزودن جزئیات نهایی و اکسسوری‌های خاص که فضای شما را به یک اثر هنری تبدیل می‌کند.",
+    description: "Adding final details and curated accessories that transform your space into a work of art.",
     icon: <Sparkles className="w-8 h-8" />,
     color: "bg-[#21a07f]"
   }
@@ -32,42 +39,42 @@ const services = [
 
 const Services = () => {
   return (
-    <section className="py-24 bg-[#F8F9FA] relative overflow-hidden">
-      {/* دکوراسیون پس‌زمینه محو */}
+    <section className={`${inter.className} py-24 bg-[#F8F9FA] relative overflow-hidden antialiased`}>
+      {/* Blurred background decoration */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,var(--tw-gradient-stops))] from-orange-50/50 via-transparent to-transparent z-0" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        
-        {/* هدر بخش خدمات */}
+
+        {/* Services section header */}
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
           <div className="max-w-2xl">
-            <motion.span 
+            <motion.span
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               className="text-[#21a07f] font-bold tracking-widest uppercase text-sm mb-4 block"
             >
               Our Services
             </motion.span>
-            <motion.h2 
+            <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="text-4xl md:text-6xl text-gray-900 font-bold italic leading-tight"
+              className="text-4xl md:text-6xl text-gray-900 font-bold "
             >
-              Experience the art of <br /> 
-              <span className=" bg-clip-text bg-linear-to-r from-gray-900 text-[#21a07f]">Modern Living.</span>
+              Experience the art of <br />
+              <span className="bg-clip-text bg-linear-to-r from-gray-900 text-[#21a07f]">Modern Living.</span>
             </motion.h2>
           </div>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             className="text-gray-500 text-lg max-w-sm pb-2"
           >
-            ما فقط فضا طراحی نمی‌کنیم؛ ما سبک زندگی جدیدی برای شما خلق می‌کنیم که فراتر از استانداردهای معمولی است.
+            We don't just design spaces; we create a new lifestyle for you that goes beyond ordinary standards.
           </motion.p>
         </div>
 
-        {/* گرید خدمات */}
+        {/* Services grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {services.map((service, index) => (
             <motion.div
@@ -78,10 +85,10 @@ const Services = () => {
               whileHover={{ y: -12 }}
               className="group relative bg-white p-8 rounded-4xl shadow-sm border border-gray-100 hover:shadow-2xl hover:shadow-[#FF7A5C]/10 transition-all duration-500 overflow-hidden"
             >
-              {/* پس‌زمینه رنگی در هنگام هوور */}
+              {/* Colored background on hover */}
               <div className="absolute top-0 right-0 w-24 h-24 bg-gray-50 rounded-bl-[100px] -z-10 group-hover:bg-[#21a07f]/5 transition-colors" />
-              
-              {/* آیکون */}
+
+              {/* Icon */}
               <div className={`w-16 h-16 ${service.color} text-white rounded-2xl flex items-center justify-center mb-8 shadow-lg group-hover:scale-110 transition-transform duration-500`}>
                 {service.icon}
               </div>
@@ -89,13 +96,13 @@ const Services = () => {
               <h3 className="font-extrabold text-gray-900 mb-4 group-hover:text-[#21a07f] transition-colors text-xs uppercase tracking-[0.3em]">
                 {service.title}
               </h3>
-              
+
               <p className="text-gray-500 leading-relaxed mb-8 text-sm">
                 {service.description}
               </p>
 
               <button className="flex items-center gap-2 text-sm font-bold text-gray-900 group/btn">
-                Learn More 
+                Learn More
                 <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center group-hover/btn:bg-[#feba0f] group-hover/btn:text-white transition-all">
                   <ArrowRight className="w-4 h-4" />
                 </div>
@@ -104,21 +111,42 @@ const Services = () => {
           ))}
         </div>
 
-        {/* بخش پایین - CTA کوچک */}
-        <motion.div 
+        {/* Bottom section - Small CTA */}
+        <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           className="mt-20 p-8 rounded-[40px] bg-[#21a07f] flex flex-col md:flex-row items-center justify-between gap-8"
         >
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-1">
             <div className="flex -space-x-4">
-              {[1,2,3,4].map(i => (
-                <div key={i} className="w-12 h-12 rounded-full border-2 border-amber-50  overflow-hidden text-white">
-                   <img src={`/logo.png`} alt="team" />
+              {[1].map(i => (
+                <div key={i} className="w-12 h-12 rounded-full border-2 border-amber-50 overflow-hidden text-white">
+                  <img src={`/aziz1.png`} alt="team" />
                 </div>
               ))}
             </div>
-            <p className="text-white font-medium text-lg">آماده‌اید با تیم متخصص ما صحبت کنید؟</p>
+            <div className="flex -space-x-4">
+              {[1].map(i => (
+                <div key={i} className="w-12 h-12 rounded-full border-2 border-amber-50 overflow-hidden text-white">
+                  <img src={`/Mahdi1.png`} alt="team" />
+                </div>
+              ))}
+            </div>
+            <div className="flex -space-x-4">
+              {[1].map(i => (
+                <div key={i} className="w-12 h-12 rounded-full border-2 border-amber-50 overflow-hidden text-white">
+                  <img src={`/Elyas.png`} alt="team" />
+                </div>
+              ))}
+            </div>
+            <div className="flex -space-x-4">
+              {[1].map(i => (
+                <div key={i} className="w-12 h-12 rounded-full border-2 border-amber-50 overflow-hidden text-white">
+                  <img src={`/Haidar.png`} alt="team" />
+                </div>
+              ))}
+            </div>
+            <p className="text-white font-medium text-lg ml-4">Ready to talk with our expert team?</p>
           </div>
           <button className="bg-white text-gray-900 px-8 py-4 rounded-2xl font-bold hover:bg-[#feba0f] hover:text-white transition-all active:scale-95 whitespace-nowrap">
             Book a Consultation

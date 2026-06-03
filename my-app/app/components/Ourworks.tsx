@@ -3,6 +3,13 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight, Sparkles, MoveRight } from "lucide-react";
+import { Inter } from "next/font/google";
+
+// Load Inter with Latin subset and swap display
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+});
 
 const categories = ["All", "Residential", "Commercial", "Modern"];
 
@@ -54,7 +61,7 @@ const PremiumPortfolio = () => {
   };
 
   return (
-    <section className="py-36 bg-[#fafafa] relative overflow-hidden select-none">
+    <section className={`${inter.className} py-36 bg-[#fafafa] relative overflow-hidden select-none antialiased`}>
       {/* Avant-Garde Subtle Atmospheric Ambient Lighting */}
       <div className="absolute top-0 right-0 w-125 h-125 bg-[#21a07f]/5 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-100 h-100 bg-[#feba0f]/5 rounded-full blur-[100px] pointer-events-none" />
@@ -68,7 +75,7 @@ const PremiumPortfolio = () => {
             </div>
             <h2 className="text-5xl md:text-7xl text-gray-900 tracking-tighter font-black leading-[0.95]">
               Selected{" "}
-              <span className="text-[#21a07f] font-light italic">
+              <span className="text-[#21a07f]">
                 Creations<span className="text-[#feba0f]">.</span>
               </span>
             </h2>

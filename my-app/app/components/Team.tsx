@@ -3,6 +3,13 @@ import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Twitter, Linkedin } from 'lucide-react';
+import { Inter } from "next/font/google";
+
+// Load Inter with Latin subset and swap display
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+});
 
 interface TeamMember {
   name: string;
@@ -12,10 +19,10 @@ interface TeamMember {
   shape: string;
 }
 
-const team: TeamMember =[
+const team: TeamMember[] = [
   {
     name: "Edris Alowdin",
-    role: "Senoir Developer",
+    role: "Senior Developer",
     image: "/Edris.png",
     bgColor: "bg-[#feba0f]",
     shape: "rounded-[80px_20px_80px_20px]", 
@@ -80,7 +87,7 @@ const team: TeamMember =[
 
 const Team = () => {
   return (
-    <motion.section  className="py-24 bg-white overflow-hidden font-sans">
+    <motion.section className={`${inter.className} py-24 bg-white overflow-hidden antialiased`}>
       <div className="max-w-7xl mx-auto px-6">
         
         <div className="text-center mb-24">

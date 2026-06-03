@@ -3,38 +3,45 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ShieldCheck, Zap, Award, Globe, Users } from 'lucide-react';
 import Image from 'next/image';
+import { Inter } from "next/font/google";
+
+// Load Inter with Latin subset and swap display
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+});
 
 const features = [
   {
     icon: <ShieldCheck className="w-6 h-6 text-[#21a07f]" />,
-    title: "تضمین کیفیت اجرایی",
-    desc: "ما از بهترین متریال‌های روز دنیا برای پروژه‌های شما استفاده می‌کنیم."
+    title: "Execution Quality Guarantee",
+    desc: "We use the world's finest and most modern materials for your projects."
   },
   {
     icon: <Zap className="w-6 h-6 text-[#21a07f]" />,
-    title: "سرعت در تحویل",
-    desc: "برنامه‌ریزی دقیق زمانی برای اتمام پروژه بدون افت کیفیت."
+    title: "Speedy Delivery",
+    desc: "Meticulous time management to complete the project without sacrificing quality."
   },
   {
     icon: <Award className="w-6 h-6 text-[#21a07f]" />,
-    title: "تیم بین‌المللی",
-    desc: "همکاری با طراحان برتر که دارای جوایز معتبر طراحی هستند."
+    title: "International Team",
+    desc: "Collaboration with top-tier designers who hold prestigious design awards."
   }
 ];
 
 const WhyChooseUs = () => {
   return (
-    <section className="py-24 bg-white overflow-hidden top-0 ">
+    <section className={`${inter.className} py-24 bg-white overflow-hidden top-0 antialiased`}>
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
 
-          {/* بخش سمت راست: محتوا */}
+          {/* Right Section: Content */}
           <div className="w-full lg:w-1/2 space-y-10">
             <div className="space-y-4">
               <motion.span
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
-                className="inline-block px-4 py-1 rounded-full  text-black text-sm font-black uppercase tracking-widest"
+                className="inline-block px-4 py-1 rounded-full text-black text-sm font-black uppercase tracking-widest"
               >
                 Why Choose Us?
               </motion.span>
@@ -43,24 +50,24 @@ const WhyChooseUs = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 className="text-5xl md:text-6xl font-black text-gray-900 leading-[1.1] tracking-tighter"
               >
-                ما استانداردها را <br />
-                <span className="text-[#21a07f]">تغییر می‌دهیم.</span>
+                We change the <br />
+                <span className="text-[#21a07f]">standards.</span>
               </motion.h2>
               <motion.p
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 className="text-gray-500 text-lg leading-relaxed max-w-lg"
               >
-                تفاوت ما در جزئیاتی است که دیگران نادیده می‌گیرند. ما فراتر از یک پیمانکار، شریک استراتژیک شما در خلق زیبایی هستیم.
+                Our difference lies in the details that others overlook. More than just a contractor, we are your strategic partner in creating beauty.
               </motion.p>
             </div>
 
-            {/* لیست ویژگی‌ها */}
+            {/* Features List */}
             <div className="space-y-6">
               {features.map((item, idx) => (
                 <motion.div
                   key={idx}
-                  initial={{ opacity: 0, x: 30 }}
+                  initial={{ opacity: 0, x: -30 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ delay: idx * 0.2 }}
                   className="flex gap-6 group p-4 rounded-3xl hover:bg-gray-50 transition-colors"
@@ -70,35 +77,36 @@ const WhyChooseUs = () => {
                   </div>
                   <div>
                     <h4 className="text-xl font-medium text-[#1A1A1A] mb-1">{item.title}</h4>
-                    <p className="text-lg leading-relaxed text-[#555] font-sans font-light">{item.desc}</p>
+                    <p className="text-lg leading-relaxed text-[#555] font-light">{item.desc}</p>
                   </div>
                 </motion.div>
               ))}
             </div>
 
-            {/* دکمه نهایی */}
+            {/* Final Button */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               className="pt-6"
             >
-              <button className="bg-[#feba0f] text-white px-10 py-5 rounded-2xl text-lg font-bold  transition-all flex items-center gap-3 shadow-xl active:scale-95 group">
-                مشاوره رایگان بگیرید
+              <button className="bg-[#feba0f] text-white px-10 py-5 rounded-2xl text-lg font-bold transition-all flex items-center gap-3 shadow-xl active:scale-95 group">
+                Get a Free Consultation
                 <span className="group-hover:translate-x-2 transition-transform">→</span>
               </button>
             </motion.div>
           </div>
-          {/* بخش سمت چپ: تصویر و المان‌های شناور */}
+
+          {/* Left Section: Image and Floating Elements */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             className="w-full lg:w-1/2 relative"
           >
-            {/* تصویر اصلی با لبه‌های گرد مدرن */}
+            {/* Main Image with modern rounded edges */}
             <div className="relative w-full h-125 md:h-150 rounded-[48px] overflow-hidden shadow-2xl">
               <Image
-                src="/why.png" // تصویر محیط کار یا تیم خود را قرار دهید
+                src="/why.png"
                 alt="Our Workspace"
                 fill
                 className="object-cover"
@@ -106,7 +114,7 @@ const WhyChooseUs = () => {
               <div className="absolute inset-0 bg-linear-to-tr from-[#21a07f]/20 to-transparent" />
             </div>
 
-            {/* کارت شناور ۱: آمار مشتریان */}
+            {/* Floating Card 1: Client Stats */}
             <motion.div
               animate={{ y: [0, -20, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
@@ -118,12 +126,12 @@ const WhyChooseUs = () => {
                 </div>
                 <div>
                   <p className="text-2xl font-black text-gray-900">98%</p>
-                  <p className="text-xs text-gray-500 font-bold uppercase tracking-wider">رضایت مشتریان</p>
+                  <p className="text-xs text-gray-500 font-bold uppercase tracking-wider">Client Satisfaction</p>
                 </div>
               </div>
             </motion.div>
 
-            {/* کارت شناور ۲: تجربه */}
+            {/* Floating Card 2: Experience */}
             <motion.div
               animate={{ y: [0, 20, 0] }}
               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
@@ -132,10 +140,11 @@ const WhyChooseUs = () => {
               <div className="flex flex-col gap-2">
                 <Globe className="text-white w-10 h-10 mb-2" />
                 <p className="text-3xl font-black italic">10+ Years</p>
-                <p className="text-white text-sm">تجربه در پروژه‌های لوکس</p>
+                <p className="text-white text-sm">Experience in luxury projects</p>
               </div>
             </motion.div>
           </motion.div>
+          
         </div>
       </div>
     </section>
