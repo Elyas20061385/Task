@@ -2,6 +2,14 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Rocket, Users, Award, Star, ArrowUpRight, Sparkles, MoveRight } from 'lucide-react';
+import { Inter } from "next/font/google";
+
+// Load Inter with Latin subset and swap display
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+});
+
 const stats = [
   { id: 1, label: "Successful Projects", value: "250+", icon: <Rocket className="w-4 h-4" /> },
   { id: 2, label: "Satisfied Clients", value: "500+", icon: <Users className="w-4 h-4" /> },
@@ -12,7 +20,7 @@ const stats = [
 const PremiumStatsAndCTA = () => {
   const [hoveredStat, setHoveredStat] = useState<number | null>(null);
   return (
-    <section className="py-36 bg-[#fafafa] relative overflow-hidden select-none">
+    <section className={`${inter.className} py-36 bg-[#fafafa] relative overflow-hidden select-none antialiased`}>
       {/* Avant-Garde Ambient Aura Lighting */}
       <div className="absolute top-1/3 left-1/4 w-150 h-150 bg-[#21a07f]/5 rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute bottom-1/4 right-1/4 w-125 h-125 bg-[#feba0f]/5 rounded-full blur-[120px] pointer-events-none" />
@@ -26,7 +34,7 @@ const PremiumStatsAndCTA = () => {
                 <Sparkles className="w-3 h-3 text-[#feba0f]" /> Empirical Milestones
               </div>
               <h2 className="text-4xl md:text-5xl font-black text-gray-900 tracking-tight leading-none">
-                Our Journey <br /><span className="text-[#21a07f] ">In Numbers<span className="text-[#feba0f]">.</span></span>
+                Our Journey <br /><span className="text-[#21a07f]">In Numbers<span className="text-[#feba0f]">.</span></span>
               </h2>
               <p className="text-gray-400 text-xs font-medium tracking-wide leading-relaxed pt-1">
                 A quantitative validation of engineering precision, creative longevity, and global trust indicators.
@@ -93,7 +101,7 @@ const PremiumStatsAndCTA = () => {
                   <span className="absolute bottom-1 left-0 w-full h-0.75 bg-white/20 rounded-full" />
                 </span>
               </h2>
-              <p className="text-white/80 text-sm font-medium leading-relaxed font-sans">
+              <p className="text-white/80 text-sm font-medium leading-relaxed">
                 Your next project could be our next masterpiece. Open a direct communication channel today and start your expert consultation.
               </p>
             </div>
@@ -120,7 +128,7 @@ const PremiumStatsAndCTA = () => {
                     </div>
                   ))}
                 </div>
-                <span className="text-white/60 text-[10px] font-bold tracking-wide uppercase font-sans">
+                <span className="text-white/60 text-[10px] font-bold tracking-wide uppercase">
                   Join 500+ Ecosystem Partners
                 </span>
               </div>

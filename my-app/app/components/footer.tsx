@@ -5,7 +5,6 @@ import Image from 'next/image';
 import { Send, ShieldCheck, Mail, Phone } from 'lucide-react';
 import { Inter } from "next/font/google";
 
-// Load Inter with Latin subset and swap display
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
@@ -113,7 +112,7 @@ const CorporateFooter = () => {
               </div>
               <div className="flex items-center gap-2.5">
                 <Phone className="w-3.5 h-3.5 text-[#feba0f]" />
-                <span dir="ltr">+98 21 0000 0000</span>
+                <span dir="ltr">+93 780 123 456</span>
               </div>
             </div>
           </div>

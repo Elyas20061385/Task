@@ -5,7 +5,6 @@ import { motion } from 'framer-motion';
 import { Twitter, Linkedin } from 'lucide-react';
 import { Inter } from "next/font/google";
 
-// Load Inter with Latin subset and swap display
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
@@ -62,29 +61,8 @@ const team: TeamMember[] = [
     bgColor: "bg-[#21a07f]",
     shape: "rounded-[80px_20px_80px_20px]", 
   },
-  {
-    name: "Najiba Amiri",
-    role: "UI Designer",
-    image: "/women2.png",
-    bgColor: "bg-[#feba0f]",
-    shape: "rounded-[80px_20px_80px_20px]", 
-  },
-  {
-    name: "Aziz Yawari",
-    role: "UI Designer",
-    image: "/aziz1.png",
-    bgColor: "bg-[#21a07f]",
-    shape: "rounded-[80px_20px_80px_20px]", 
-  },
-  {
-    name: "Hussain Khashaie",
-    role: "UI Designer",
-    image: "/Hussain.png",
-    bgColor: "bg-[#21a07f]",
-    shape: "rounded-[80px_20px_80px_20px]", 
-  },
+  
 ];
-
 const Team = () => {
   return (
     <motion.section className={`${inter.className} py-24 bg-white overflow-hidden antialiased`}>
@@ -141,5 +119,4 @@ const Team = () => {
     </motion.section>
   );
 };
-
 export default Team;

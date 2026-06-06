@@ -85,11 +85,10 @@ const WorldClassNavbar = () => {
     <div className={`${inter.className} antialiased`}>
       {/* Dynamic World-Class Top Navbar */}
       <nav
-        className={`fixed top-0 left-0 right-0 z-100 transition-all duration-500 px-6 md:px-16 ${
-          scrolled
+        className={`fixed top-0 left-0 right-0 z-100 transition-all duration-500 px-6 md:px-16 ${scrolled
             ? "py-4 bg-white/70 backdrop-blur-xl shadow-[0_20px_50px_rgba(0,0,0,0.03)]"
             : "py-8 bg-transparent"
-        }`}
+          }`}
       >
         <div className="max-w-7xl mx-auto flex items-center justify-between relative bg-[#21a07f] border border-gray-100/80 p-3 pl-4 md:pl-6 rounded-[28px] shadow-[0_24px_60px_-15px_rgba(33,160,127,0.06)] backdrop-blur-xl">
           {/* Left: Asymmetric Kinetic Brand Anchor */}
@@ -292,23 +291,23 @@ const WorldClassNavbar = () => {
                 <div className="relative z-10 flex flex-col h-full">
                   <div className="inline-flex items-center gap-2 bg-[#21a07f]/10 border border-[#21a07f]/20 text-[#21a07f] px-3 py-1.5 rounded-full text-[10px] tracking-wider uppercase font-bold mb-8 shadow-sm w-fit">
                     <Sparkles className="w-3 h-3" />
-                    پروژه‌های هیجان‌انگیز
+                    Exciting Projects
                   </div>
-                  <div className="space-y-6" dir="rtl">
-                    <h3 className="text-3xl font-black leading-tight text-right">
-                      <span className="text-gray-900">بیاین با هم</span>
+                  <div className="space-y-6">
+                    <h3 className="text-3xl font-black leading-tight">
+                      <span className="text-gray-900">Let's build it</span>
                       <br />
                       <span className="bg-linear-to-r from-[#21a07f] to-[#2cbe94] bg-clip-text text-transparent">
-                        بسازیمش!
+                        together!
                       </span>
                     </h3>
-                    <p className="text-gray-600 text-sm leading-relaxed text-right">
-                      ما همیشه آماده تبدیل ایده‌های ساختارشکن شما به کدهای پایدار
-                      و شاهکارهای دیجیتال هستیم.
+                    <p className="text-gray-600 text-sm leading-relaxed">
+                      We are always ready to turn your disruptive ideas into stable
+                      code and digital masterpieces.
                     </p>
-                    <p className="text-gray-400 text-xs italic border-r-2 border-[#21a07f] pr-3 text-right">
-                      "We are always ready to turn your disruptive ideas into
-                      stable code and digital masterpieces."
+                    <p className="text-gray-400 text-xs italic border-l-2 border-[#21a07f] pl-3">
+                      “We are always ready to turn your disruptive ideas into
+                      stable code and digital masterpieces.”
                     </p>
                   </div>
                   <div className="mt-auto pt-12 space-y-4">
@@ -345,7 +344,7 @@ const WorldClassNavbar = () => {
                       Direct Channel
                     </h2>
                     <p className="text-gray-500 text-sm tracking-wide">
-                      ارسال پیام مستقیم
+                      Send a direct message
                     </p>
                   </div>
                   <form onSubmit={handleSubmit} className="space-y-6">
@@ -398,7 +397,7 @@ const WorldClassNavbar = () => {
                       className="w-full relative overflow-hidden group bg-linear-to-r from-[#feba0f] to-[#e2a409] rounded-xl py-4 font-black tracking-wider uppercase text-xs text-white shadow-lg shadow-[#feba0f]/20"
                     >
                       <span className="relative z-10 flex items-center justify-center gap-2">
-                        Dispatch Message
+                        Send Message
                         <Send className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                       </span>
                       <div className="absolute inset-0 w-full h-full bg-linear-to-r from-[#e2a409] to-[#feba0f] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
