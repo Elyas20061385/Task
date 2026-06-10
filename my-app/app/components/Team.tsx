@@ -24,50 +24,71 @@ const team: TeamMember[] = [
     role: "Senior Developer",
     image: "/Edris.png",
     bgColor: "bg-[#feba0f]",
-    shape: "rounded-[80px_20px_80px_20px]", 
+    shape: "rounded-[80px_20px_80px_20px]",
   },
   {
     name: "Elyas Alowdin",
     role: "Senior Developer",
     image: "/Elyas.png",
     bgColor: "bg-[#21a07f]",
-    shape: "rounded-[60px_10px_60px_10px]", 
+    shape: "rounded-[60px_10px_60px_10px]",
   },
   {
     name: "Mahdi Jahangir",
     role: "Senior Developer",
     image: "/Mahdi1.png",
     bgColor: "bg-[#feba0f]",
-    shape: "rounded-[80px_20px_80px_20px]", 
+    shape: "rounded-[80px_20px_80px_20px]",
   },
   {
     name: "Mohammad Ali Painda",
     role: "Senior Developer",
     image: "/Painda.png",
     bgColor: "bg-[#21a07f]",
-    shape: "rounded-[80px_20px_80px_20px]", 
+    shape: "rounded-[80px_20px_80px_20px]",
   },
   {
     name: "Haidar Rezai",
     role: "Our Instructor",
     image: "/Haidar.png",
     bgColor: "bg-[#feba0f]",
-    shape: "rounded-[80px_20px_80px_20px]", 
+    shape: "rounded-[80px_20px_80px_20px]",
   },
   {
     name: "Noria Ghaznawi",
     role: "UI Designer",
     image: "/women2.png",
     bgColor: "bg-[#21a07f]",
-    shape: "rounded-[80px_20px_80px_20px]", 
+    shape: "rounded-[80px_20px_80px_20px]",
   },
-  
+  {
+    name: "Hussain Khashaie",
+    role: "UI Designer",
+    image: "/Hussain.png",
+    bgColor: "bg-[#feba0f]",
+    shape: "rounded-[80px_20px_80px_20px]",
+  },
+  {
+    name: "Omid Ezatyar",
+    role: "Mobile Developer",
+    image: "/Omid.png",
+    bgColor: "bg-[#21a07f]",
+    shape: "rounded-[80px_20px_80px_20px]",
+  },
+  {
+    name: "Mahdi Rahimi",
+    role: "UI Designer",
+    image: "/Mahdi2.png",
+    bgColor: "bg-[#feba0f]",
+    shape: "rounded-[80px_20px_80px_20px]",
+  },
+
 ];
 const Team = () => {
   return (
     <motion.section className={`${inter.className} py-24 bg-white overflow-hidden antialiased`}>
       <div className="max-w-7xl mx-auto px-6">
-        
+
         <div className="text-center mb-24">
           <h2 className="text-4xl md:text-6xl font-bold text-gray-900 leading-tight tracking-tight">
             Meet the <span className="italic font-serif font-light opacity-70">creative minds</span> <br />
@@ -77,7 +98,7 @@ const Team = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
           {team.map((member, index) => (
-            <motion.div 
+            <motion.div
               key={index}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -86,17 +107,17 @@ const Team = () => {
               className="flex flex-col items-center group"
             >
               <div className="relative w-full aspect-4/5 mb-8">
-                <motion.div 
+                <motion.div
                   whileHover={{ scale: 1.05, rotate: index % 2 === 0 ? 2 : -2 }}
                   className={`absolute inset-0 ${member.bgColor} ${member.shape} transition-all duration-500`}
                 />
-                
+
                 <div className="absolute inset-0 flex items-end justify-center">
                   <div className="relative w-[90%] h-[90%]">
-                    <Image 
-                      src={member.image} 
-                      alt={member.name} 
-                      fill 
+                    <Image
+                      src={member.image}
+                      alt={member.name}
+                      fill
                       className="object-cover rounded-[80px_20px_80px_20px]"
                     />
                   </div>
