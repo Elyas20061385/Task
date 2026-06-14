@@ -121,7 +121,7 @@ const Services = () => {
             <div className="flex -space-x-4">
               {[1].map(i => (
                 <div key={i} className="w-12 h-12 rounded-full border-2 border-amber-50 overflow-hidden text-white">
-                  <img src={`/aziz1.png`} alt="team" />
+                  <img src={`/Painda.png`} alt="team" />
                 </div>
               ))}
             </div>

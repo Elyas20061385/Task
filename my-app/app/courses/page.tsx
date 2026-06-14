@@ -23,6 +23,9 @@ import {
   UsersRound,
   Share2,
   Download,
+  Users,
+  Calendar,
+  Compass,
 } from "lucide-react";
 
 // ========== Types ==========
@@ -40,9 +43,9 @@ interface Course {
   shortDescription?: string;
   level?: "beginner" | "intermediate" | "advanced";
   language?: "english" | "persian" | "pashto" | "arabic";
-  duration?: string; // e.g., "8 weeks"
+  duration?: string;
   meetingType?: "google_meet" | "zoom" | "physical" | "recorded";
-  startDate?: string; // ISO string
+  startDate?: string;
   scheduleRows?: { day: string; startTime: string; endTime: string }[];
   whatYouWillLearn?: string[];
   curriculumTopics?: string[];
@@ -190,7 +193,7 @@ const CourseCard: React.FC<{ course: Course; onSelect: (course: Course) => void 
   );
 };
 
-// ========== Detailed Course View Component ==========
+// ========== Detailed Course View Component (fully fixed) ==========
 const CourseDetailView: React.FC<{
   course: Course;
   onBack: () => void;
@@ -268,7 +271,7 @@ const CourseDetailView: React.FC<{
   };
 
   return (
-    <div className="bg-slate-50 pb-24 pt-5 mt-32 font-sans antialiased">
+    <div className="bg-slate-50 pb-24 pt-5 font-sans antialiased mt-32">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Back button */}
         <button
@@ -278,25 +281,31 @@ const CourseDetailView: React.FC<{
           <FaArrowLeft size={14} /> Back to all courses
         </button>
 
-        <div className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_340px]">
+        <div className="grid gap-8 xl:grid-cols-[minmax(0,1fr)_340px] items-start">
           {/* Main content */}
-          <div className="space-y-5">
-            {/* Hero card */}
-            <div className="rounded-3xl border border-slate-200 bg-white shadow-[0_18px_45px_rgba(15,23,42,0.08)] p-4 sm:p-6">
-              <div className="grid gap-5 lg:grid-cols-[minmax(0,1.15fr)_minmax(280px,0.85fr)]">
-                <div>
-                  <h1 className="text-2xl md:text-3xl font-black text-slate-950">{course.title}</h1>
-                  <p className="mt-3 text-[15px] leading-7 text-slate-600">{course.description}</p>
+          <div className="space-y-6">
+            {/* Hero section */}
+            <div className="relative overflow-hidden rounded-3xl border border-slate-200/80 bg-white shadow-sm p-6 md:p-8">
+              <div className="grid gap-6 lg:grid-cols-[minmax(0,1.2fr)_minmax(300px,0.8fr)] items-center">
+                <div className="space-y-4">
+                  <h1 className="text-2xl md:text-3xl lg:text-4xl font-extrabold tracking-tight text-slate-900 leading-tight">
+                    {course.title}
+                  </h1>
+                  <p className="text-[15px] leading-relaxed text-slate-500/90 font-medium">
+                    {course.description}
+                  </p>
                   {course.shortDescription && (
-                    <p className="mt-2 text-sm text-slate-500">{course.shortDescription}</p>
+                    <p className="inline-flex items-center rounded-md bg-slate-50 border border-slate-100 px-2.5 py-1 text-xs font-semibold text-slate-600">
+                      {course.shortDescription}
+                    </p>
                   )}
                 </div>
-                <div className="aspect-750/422 overflow-hidden rounded-2xl bg-slate-100">
+                <div className="aspect-video overflow-hidden rounded-2xl border border-slate-100 shadow-sm bg-slate-50">
                   {course.thumbnail ? (
-                    <img src={course.thumbnail} alt={course.title} className="h-full w-full object-cover" />
+                    <img src={course.thumbnail} alt={course.title} className="h-full w-full object-cover transition-transform duration-500 hover:scale-105" />
                   ) : (
-                    <div className="flex h-full items-center justify-center bg-[#21a07f]/10">
-                      <course.icon className="h-20 w-20 text-[#21a07f]/50" />
+                    <div className="flex h-full items-center justify-center bg-[#21a07f]/5">
+                      <course.icon className="h-16 w-16 text-[#21a07f]/40" />
                     </div>
                   )}
                 </div>
@@ -305,158 +314,370 @@ const CourseDetailView: React.FC<{
 
             {/* Quick facts */}
             {quickFacts.length > 0 && (
-              <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
-                {quickFacts.map((fact, idx) => {
-                  const Icon = fact!.icon;
-                  return (
-                    <div key={idx} className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
-                      <div className="flex items-start gap-3">
-                        <div className="mt-0.5 grid h-9 w-9 place-items-center rounded-full bg-primary-50 text-primary-700">
-                          <Icon size={16} />
+              <div className="space-y-4">
+                <div className="flex items-center justify-between px-1">
+                  <h3 className="text-xs font-bold uppercase tracking-widest text-slate-400">Course Overview</h3>
+                  <span className="h-px flex-1 bg-linear-to-r from-slate-200/60 via-slate-100 to-transparent ml-4 hidden sm:block" />
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                  {quickFacts.map((fact, idx) => {
+                    const Icon = fact!.icon;
+                    return (
+                      <div
+                        key={idx}
+                        className="group relative flex flex-col sm:flex-row sm:items-center gap-4 rounded-2xl border border-slate-200/60 bg-linear-to-b from-white to-slate-50/40 p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-slate-300 hover:shadow-md"
+                      > 
+                        <div className="absolute left-0 top-1/4 h-1/2 w-0.75 rounded-r-full bg-primary-600 opacity-0 scale-y-50 transition-all duration-300 group-hover:opacity-100 group-hover:scale-y-100" />
+                        <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-slate-200/50 bg-white shadow-xs text-slate-500 transition-all duration-300 group-hover:scale-105 group-hover:border-primary-100 group-hover:bg-primary-50/50 group-hover:text-primary-600">
+                          <Icon size={18} strokeWidth={2} />
                         </div>
-                        <div>
-                          <p className="text-xs font-bold text-slate-500">{fact!.label}</p>
-                          <p className="mt-1 text-sm font-black text-slate-900">{fact!.value}</p>
+                        <div className="flex-1 min-w-0 space-y-0.5">
+                          <span className="block text-[10px] font-bold tracking-widest uppercase text-slate-400 leading-none">
+                            {fact!.label}
+                          </span>
+                          <span className="block text-[14px] font-semibold tracking-tight text-slate-800 leading-snug wrap-break-word whitespace-normal">
+                            {fact!.value}
+                          </span>
                         </div>
                       </div>
-                    </div>
-                  );
-                })}
+                    );
+                  })}
+                </div>
               </div>
             )}
 
-            {/* Who is this for & Schedule */}
-            <div className="grid gap-5 lg:grid-cols-2">
-              <div className="rounded-2xl border border-slate-200 bg-white p-5">
-                <h2 className="text-xl font-black text-slate-950">Who is this course for?</h2>
-                <div className="mt-4 space-y-2.5">
-                  {suitableAudience.length ? suitableAudience.map((item, i) => (
-                    <p key={i} className="flex items-start gap-2 text-sm font-semibold text-slate-700">
-                      <CheckCircle2 className="mt-0.5 shrink-0 text-emerald-600" size={16} />
-                      <span>{item}</span>
-                    </p>
-                  )) : <p className="text-sm text-slate-500">Not specified yet.</p>}
-                </div>
-              </div>
-              <div className="rounded-2xl border border-slate-200 bg-white p-5">
-                <h2 className="text-xl font-black text-slate-950">Weekly Schedule</h2>
-                <div className="mt-4 overflow-hidden rounded-xl border border-slate-200">
-                  {scheduleRows.map((row, idx) => (
-                    <div key={idx} className="grid grid-cols-3 gap-2 border-b border-slate-100 px-3 py-3 text-xs font-semibold text-slate-700 last:border-0">
-                      <span>{formatDayLabel(row.day)}</span>
-                      <span>{row.startTime}</span>
-                      <span className="text-teal-700">{row.endTime}</span>
+            {/* Target Audience & Schedule */}
+            <div className="grid gap-8 md:grid-cols-2">
+
+              {/* 1. ELITE TARGET AUDIENCE: Bento-Style Persona Grid */}
+              <div className="group/card relative flex flex-col rounded-3xl border border-slate-200/70 bg-linear-to-b from-white to-slate-50/50 p-6 shadow-[0_2px_8px_rgba(15,23,42,0.01),0_20px_40px_-16px_rgba(15,23,42,0.03)] transition-all duration-300 hover:border-slate-300 hover:shadow-[0_4px_24px_rgba(15,23,42,0.02),0_32px_64px_-16px_rgba(15,23,42,0.05)]">
+
+                {/* Top decorative gradient glow accent */}
+                <div className="absolute top-0 right-12 h-px w-24 bg-linear-to-r from-transparent via-emerald-400/40 to-transparent opacity-0 transition-opacity duration-500 group-hover/card:opacity-100" />
+
+                <div className="flex items-center justify-between mb-6">
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-emerald-50 border border-emerald-100/50 text-emerald-600 shadow-3xs">
+                      <Users size={15} strokeWidth={2.2} />
                     </div>
-                  ))}
+                    <h2 className="text-[15px] font-bold tracking-tight text-slate-900">Target Audience</h2>
+                  </div>
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 shadow-[0_0_8px_#10b981]" />
+                </div>
+
+                <div className="flex-1 space-y-3">
+                  {suitableAudience.length ? (
+                    suitableAudience.map((item, i) => (
+                      <div
+                        key={i}
+                        className="group relative flex items-start gap-4 rounded-2xl border border-slate-100 bg-white p-4 shadow-[0_1px_3px_rgba(15,23,42,0.01)] transition-all duration-300 hover:-translate-y-0.5 hover:border-slate-200 hover:shadow-[0_4px_12px_rgba(15,23,42,0.02)]"
+                      >
+                        {/* Dynamic left border highlight line */}
+                        <div className="absolute left-0 top-4 bottom-4 w-[2.5px] rounded-r-full bg-emerald-500 opacity-0 scale-y-50 transition-all duration-300 ease-out group-hover:opacity-100 group-hover:scale-y-100" />
+
+                        <div className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-emerald-50/60 border border-emerald-100/30 text-emerald-600 shadow-3xs transition-all duration-300 group-hover:scale-105 group-hover:bg-emerald-50">
+                          <CheckCircle2 size={13} strokeWidth={2.5} />
+                        </div>
+
+                        <span className="text-[13px] font-medium leading-relaxed text-slate-600 transition-colors duration-200 group-hover:text-slate-900">
+                          {item}
+                        </span>
+                      </div>
+                    ))
+                  ) : (
+                    <div className="flex h-full min-h-35 flex-col items-center justify-center rounded-2xl border border-dashed border-slate-200 bg-slate-50/30 p-4 text-center">
+                      <p className="text-xs font-semibold text-slate-400 italic">No target profiles defined yet.</p>
+                    </div>
+                  )}
                 </div>
               </div>
+
+              {/* 2. PREMIUM AGENDA TIMELINE: High-End Interactive Grid */}
+              <div className="group/card relative flex flex-col rounded-3xl border border-slate-200/70 bg-linear-to-b from-white to-slate-50/50 p-6 shadow-[0_2px_8px_rgba(15,23,42,0.01),0_20px_40px_-16px_rgba(15,23,42,0.03)] transition-all duration-300 hover:border-slate-300 hover:shadow-[0_4px_24px_rgba(15,23,42,0.02),0_32px_64px_-16px_rgba(15,23,42,0.05)]">
+
+                {/* Top decorative gradient glow accent */}
+                <div className="absolute top-0 right-12 h-px w-24 bg-linear-to-r from-transparent via-primary-400/40 to-transparent opacity-0 transition-opacity duration-500 group-hover/card:opacity-100" />
+
+                <div className="flex items-center justify-between mb-6">
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-primary-50 border border-primary-100/50 text-primary-600 shadow-3xs">
+                      <Calendar size={15} strokeWidth={2.2} />
+                    </div>
+                    <h2 className="text-[15px] font-bold tracking-tight text-slate-900">Weekly Schedule</h2>
+                  </div>
+                  <span className="inline-flex items-center rounded-full bg-slate-100/80 border border-slate-200/60 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-slate-500 shadow-3xs backdrop-blur-xs">
+                    Live Cohort
+                  </span>
+                </div>
+
+                <div className="flex-1 space-y-2.5">
+                  {scheduleRows.length ? (
+                    scheduleRows.map((row, idx) => (
+                      <div
+                        key={idx}
+                        className="group flex items-center justify-between rounded-2xl border border-slate-100 bg-white p-3.5 shadow-[0_1px_3px_rgba(15,23,42,0.01)] transition-all duration-300 hover:-translate-y-0.5 hover:border-slate-200 hover:shadow-[0_4px_12px_rgba(15,23,42,0.02)]"
+                      >
+                        {/* Elegant Calendar Badging */}
+                        <div className="flex items-center gap-3">
+                          <div className="flex h-8 w-14 items-center justify-center rounded-xl bg-slate-50 border border-slate-100 text-xs font-bold text-slate-700 shadow-3xs transition-all duration-300 group-hover:bg-primary-50/50 group-hover:text-primary-700 group-hover:border-primary-100/50">
+                            {formatDayLabel(row.day).slice(0, 3)}
+                          </div>
+                          <span className="hidden sm:inline text-xs font-semibold text-slate-400 transition-colors duration-200 group-hover:text-slate-600">
+                            {formatDayLabel(row.day)}
+                          </span>
+                        </div>
+
+                        {/* Time Badge with Structural Pill Architecture */}
+                        <div className="flex items-center gap-2.5">
+                          <span className="text-xs font-bold text-slate-700 tracking-tight">{row.startTime}</span>
+                          <span className="text-[10px] font-black text-slate-300 tracking-widest">—</span>
+                          <span className="inline-flex items-center justify-center rounded-lg bg-teal-50/60 border border-teal-100/50 px-2.5 py-1 text-xs font-bold text-teal-700 shadow-3xs transition-colors duration-200 group-hover:bg-teal-50 group-hover:text-teal-800">
+                            {row.endTime}
+                          </span>
+                        </div>
+                      </div>
+                    ))
+                  ) : (
+                    <div className="flex h-full min-h-35 flex-col items-center justify-center rounded-2xl border border-dashed border-slate-200 bg-slate-50/30 p-4 text-center">
+                      <p className="text-xs font-semibold text-slate-400 italic">No class timings arranged yet.</p>
+                    </div>
+                  )}
+                </div>
+              </div>
+
             </div>
 
-            {/* What you'll learn & Requirements */}
-            <div className="grid gap-5 lg:grid-cols-2">
-              <div className="rounded-2xl border border-slate-200 bg-white p-5">
-                <h2 className="text-xl font-black text-slate-950">What you'll learn</h2>
-                <div className="mt-4 space-y-2.5">
-                  {learningOutcomes.length ? learningOutcomes.map((item, i) => (
-                    <p key={i} className="flex items-start gap-2 text-sm font-semibold text-slate-700">
-                      <CheckCircle2 className="mt-0.5 shrink-0 text-primary-700" size={16} />
-                      <span>{item}</span>
-                    </p>
-                  )) : <p className="text-sm text-slate-500">Not added yet.</p>}
-                </div>
-              </div>
-              <div className="rounded-2xl border border-slate-200 bg-white p-5">
-                <h2 className="text-xl font-black text-slate-950">Requirements</h2>
-                <div className="mt-4 space-y-2">
-                  {requirements.length ? requirements.map((item, i) => (
-                    <div key={i} className="rounded-lg border border-slate-200 bg-slate-50 px-3 py-2.5 text-sm font-semibold text-slate-700">
-                      {item}
+
+
+            {/* Learning Outcomes & Requirements */}
+            <div className="grid gap-6 md:grid-cols-2">
+
+              {/* 1. WHAT YOU'LL LEARN: Premium Outcome Grid */}
+              <div className="group/card relative flex flex-col rounded-3xl border border-slate-200/70 bg-linear-to-b from-white to-slate-50/50 p-6 shadow-[0_2px_8px_rgba(15,23,42,0.01),0_20px_40px_-16px_rgba(15,23,42,0.03)] transition-all duration-300 hover:border-slate-300 hover:shadow-[0_4px_24px_rgba(15,23,42,0.02),0_32px_64px_-16px_rgba(15,23,42,0.05)]">
+
+                {/* Decorative hairline gradient glow on hover */}
+                <div className="absolute top-0 right-12 h-px w-24 bg-linear-to-r from-transparent via-primary-400/40 to-transparent opacity-0 transition-opacity duration-500 group-hover/card:opacity-100" />
+
+                <div className="flex items-center justify-between mb-6">
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-primary-50 border border-primary-100/50 text-primary-600 shadow-3xs">
+                      <BookOpen size={15} strokeWidth={2.2} />
                     </div>
-                  )) : <p className="text-sm text-slate-500">No prerequisites required.</p>}
+                    <h2 className="text-[15px] font-bold tracking-tight text-slate-900">What you'll learn</h2>
+                  </div>
+                  <span className="h-1.5 w-1.5 rounded-full bg-primary-500 shadow-[0_0_8px_rgba(var(--primary-rgb),0.6)]" />
+                </div>
+
+                <div className="flex-1 space-y-3">
+                  {learningOutcomes.length ? (
+                    learningOutcomes.map((item, i) => (
+                      <div
+                        key={i}
+                        className="group relative flex items-start gap-4 rounded-2xl border border-slate-100 bg-white p-4 shadow-[0_1px_3px_rgba(15,23,42,0.01)] transition-all duration-300 hover:-translate-y-0.5 hover:border-slate-200 hover:shadow-[0_4px_12px_rgba(15,23,42,0.02)]"
+                      >
+                        {/* Dynamic left border highlight bar */}
+                        <div className="absolute left-0 top-4 bottom-4 w-[2.5px] rounded-r-full bg-primary-600 opacity-0 scale-y-50 transition-all duration-300 ease-out group-hover:opacity-100 group-hover:scale-y-100" />
+
+                        <div className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary-50/60 border border-primary-100/30 text-primary-600 shadow-3xs transition-all duration-300 group-hover:scale-105 group-hover:bg-primary-50">
+                          <CheckCircle2 size={13} strokeWidth={2.5} />
+                        </div>
+
+                        <span className="text-[13px] font-medium leading-relaxed text-slate-600 transition-colors duration-200 group-hover:text-slate-900">
+                          {item}
+                        </span>
+                      </div>
+                    ))
+                  ) : (
+                    <div className="flex h-full min-h-35 flex-col items-center justify-center rounded-2xl border border-dashed border-slate-200 bg-slate-50/30 p-4 text-center">
+                      <p className="text-xs font-semibold text-slate-400 italic">No outcomes defined yet.</p>
+                    </div>
+                  )}
                 </div>
               </div>
+
+              {/* 2. REQUIREMENTS: Premium Prerequisite Track */}
+              <div className="group/card relative flex flex-col rounded-3xl border border-slate-200/70 bg-linear-to-b from-white to-slate-50/50 p-6 shadow-[0_2px_8px_rgba(15,23,42,0.01),0_20px_40px_-16px_rgba(15,23,42,0.03)] transition-all duration-300 hover:border-slate-300 hover:shadow-[0_4px_24px_rgba(15,23,42,0.02),0_32px_64px_-16px_rgba(15,23,42,0.05)]">
+
+                {/* Decorative hairline gradient glow on hover */}
+                <div className="absolute top-0 right-12 h-px w-24 bg-linear-to-r from-transparent via-slate-400/30 to-transparent opacity-0 transition-opacity duration-500 group-hover/card:opacity-100" />
+
+                <div className="flex items-center justify-between mb-6">
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-slate-100 border border-slate-200/50 text-slate-600 shadow-3xs">
+                      <Compass size={15} strokeWidth={2.2} />
+                    </div>
+                    <h2 className="text-[15px] font-bold tracking-tight text-slate-900">Requirements</h2>
+                  </div>
+                  <span className="inline-flex items-center rounded-full bg-slate-100 border border-slate-200/60 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-slate-500 shadow-3xs">
+                    Prerequisites
+                  </span>
+                </div>
+
+                <div className="flex-1 space-y-2.5">
+                  {requirements.length ? (
+                    requirements.map((item, i) => (
+                      <div
+                        key={i}
+                        className="group flex items-center justify-between rounded-2xl border border-slate-100 bg-white p-3.5 shadow-[0_1px_3px_rgba(15,23,42,0.01)] transition-all duration-300 hover:-translate-y-0.5 hover:border-slate-200 hover:shadow-[0_4px_12px_rgba(15,23,42,0.02)]"
+                      >
+                        <div className="flex items-center gap-3 w-full">
+                          {/* Premium ordered badge identifier */}
+                          <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-slate-50 border border-slate-100 text-[11px] font-bold text-slate-400 shadow-3xs transition-all duration-300 group-hover:bg-slate-900 group-hover:text-white group-hover:border-slate-900">
+                            {String(i + 1).padStart(2, '0')}
+                          </div>
+                          <span className="text-[13px] font-semibold text-slate-600 leading-snug transition-colors duration-200 group-hover:text-slate-900 wrap-break-word w-full">
+                            {item}
+                          </span>
+                        </div>
+                      </div>
+                    ))
+                  ) : (
+                    <div className="flex h-full min-h-35 flex-col items-center justify-center rounded-2xl border border-dashed border-slate-200 bg-slate-50/30 p-4 text-center">
+                      <p className="text-xs font-semibold text-slate-400 italic">No prerequisites required.</p>
+                    </div>
+                  )}
+                </div>
+              </div>
+
             </div>
+
 
             {/* Syllabus */}
-            <div className="rounded-2xl border border-slate-200 bg-white p-5">
-              <h2 className="text-xl font-black text-slate-950">Course Syllabus</h2>
-              <div className="mt-3 max-h-130 space-y-2 overflow-y-auto pe-1">
+            <div className="rounded-2xl border border-slate-200/80 bg-white p-6 shadow-sm">
+              <h2 className="text-lg font-bold tracking-tight text-slate-900">Course Syllabus</h2>
+              <div className="mt-4 max-h-96 space-y-2 overflow-y-auto pr-1">
                 {syllabusItems.length ? syllabusItems.map((item, i) => (
-                  <div key={i} className="flex min-h-11 items-center rounded-lg border border-slate-200 px-4 py-2.5 text-sm font-bold text-slate-800">
-                    {item}
+                  <div key={i} className="group flex min-h-12 items-center justify-between rounded-xl border border-slate-100 bg-white px-4 py-3 shadow-sm transition-all hover:border-slate-200 hover:bg-slate-50/40">
+                    <div className="flex items-center gap-3 min-w-0">
+                      <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-slate-50 text-[11px] font-bold text-slate-400 border border-slate-100 group-hover:bg-primary-50 group-hover:text-primary-600 group-hover:border-primary-100">
+                        {String(i + 1).padStart(2, '0')}
+                      </span>
+                      <span className="text-[14px] font-semibold text-slate-700 truncate group-hover:text-slate-900">
+                        {item}
+                      </span>
+                    </div>
                   </div>
-                )) : <p className="text-sm text-slate-500">Syllabus coming soon.</p>}
+                )) : <p className="text-sm text-slate-400 italic">Syllabus coming soon.</p>}
               </div>
             </div>
           </div>
 
-          {/* Sidebar - Registration / Price */}
-          <aside className="hidden xl:block">
-            <div className="sticky top-24 rounded-2xl border border-slate-200 bg-white p-5 shadow-[0_16px_40px_rgba(15,23,42,0.08)]">
-              <p className="text-center text-xs font-bold uppercase text-slate-500">Course Fee</p>
-              <p className="mt-1 text-center text-3xl font-black text-slate-950" dir="ltr">
-                {formatPrice(course.discountPrice)}
-              </p>
-              <p className="text-center text-xs text-slate-400 line-through">{formatPrice(course.price)}</p>
+          {/* Sidebar - Registration Form */}
+          <aside className="hidden xl:block sticky top-6 w-full max-w-87.5">
+            <div className="relative overflow-hidden rounded-3xl border border-slate-200/80 bg-linear-to-b from-white to-slate-50/50 p-6 shadow-[0_2px_12px_rgba(15,23,42,0.01),0_24px_48px_-12px_rgba(15,23,42,0.04)]">
 
-              <div className="mt-5 space-y-3">
-                <div className="flex justify-between rounded-lg bg-slate-50 px-3 py-2 text-sm font-semibold">
-                  <span>💳 Secure payment</span>
-                  <span className="text-[#21a07f]">HesabPay / Cash</span>
+              {/* Premium top accent glow path */}
+              <div className="absolute top-0 inset-x-0 h-0.5 bg-linear-to-r from-transparent via-[#21a07f]/40 to-transparent" />
+
+              {/* 1. FinTech Pricing Display Frame */}
+              <div className="relative rounded-2xl bg-slate-50 border border-slate-100 p-5 text-center shadow-inner">
+
+
+                <div className="flex items-baseline justify-center gap-2">
+                  <span className="text-3xl font-extrabold tracking-tight text-slate-950" dir="ltr">
+                    {formatPrice(course.discountPrice)}
+                  </span>
+                  {course.price && (
+                    <span className="text-sm font-semibold text-slate-400 line-through">
+                      {formatPrice(course.price)}
+                    </span>
+                  )}
                 </div>
-                <div className="flex justify-between rounded-lg bg-slate-50 px-3 py-2 text-sm font-semibold">
-                  <span>📚 Access</span>
-                  <span>Lifetime</span>
+                <p className="mt-1.5 text-[11px] font-medium text-slate-400">Includes all materials & certificate</p>
+              </div>
+
+              {/* 2. Structured Meta Value Track */}
+              <div className="mt-5 space-y-2.5">
+                <div className="group flex items-center justify-between rounded-xl border border-slate-100 bg-white p-3 shadow-[0_1px_2px_rgba(0,0,0,0.01)] hover:border-slate-200 transition-colors">
+                  <div className="flex items-center gap-2.5">
+                    <span className="text-base text-slate-500 group-hover:scale-105 transition-transform">💳</span>
+                    <span className="text-xs font-bold text-slate-500">Secure Payment</span>
+                  </div>
+                  <span className="inline-flex items-center rounded-md bg-teal-50/60 border border-teal-100/40 px-2 py-0.5 text-xs font-bold text-[#21a07f]">
+                    HesabPay / Cash
+                  </span>
+                </div>
+
+                <div className="group flex items-center justify-between rounded-xl border border-slate-100 bg-white p-3 shadow-[0_1px_2px_rgba(0,0,0,0.01)] hover:border-slate-200 transition-colors">
+                  <div className="flex items-center gap-2.5">
+                    <span className="text-base text-slate-500 group-hover:scale-105 transition-transform">📚</span>
+                    <span className="text-xs font-bold text-slate-500">Course Access</span>
+                  </div>
+                  <span className="text-xs font-bold text-slate-700">Lifetime Upgrade</span>
                 </div>
               </div>
 
-              <form onSubmit={handleSubmit} className="mt-5 space-y-4">
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Full Name"
-                  required
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  className="w-full rounded-lg border border-slate-200 px-4 py-2.5 text-sm focus:border-[#21a07f] focus:outline-none"
-                />
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Email Address"
-                  required
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  className="w-full rounded-lg border border-slate-200 px-4 py-2.5 text-sm focus:border-[#21a07f] focus:outline-none"
-                />
-                <input
-                  type="tel"
-                  name="phone"
-                  placeholder="Phone (WhatsApp)"
-                  required
-                  value={formData.phone}
-                  onChange={handleInputChange}
-                  className="w-full rounded-lg border border-slate-200 px-4 py-2.5 text-sm focus:border-[#21a07f] focus:outline-none"
-                />
+              {/* 3. Luxury Premium Input Field Tray */}
+              <form onSubmit={handleSubmit} className="mt-6 space-y-3.5">
+                <div className="space-y-1">
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Full Name"
+                    required
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-xs font-semibold text-slate-800 placeholder-slate-400 shadow-3xs transition-all duration-200 focus:border-[#21a07f] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#21a07f]/10"
+                  />
+                </div>
+
+                <div className="space-y-1">
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Email Address"
+                    required
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-xs font-semibold text-slate-800 placeholder-slate-400 shadow-3xs transition-all duration-200 focus:border-[#21a07f] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#21a07f]/10"
+                  />
+                </div>
+
+                <div className="space-y-1">
+                  <input
+                    type="tel"
+                    name="phone"
+                    placeholder="Phone (WhatsApp)"
+                    required
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                    className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-xs font-semibold text-slate-800 placeholder-slate-400 shadow-3xs transition-all duration-200 focus:border-[#21a07f] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#21a07f]/10"
+                  />
+                </div>
+
+                {/* 4. Glossy Action Call-To-Action Button */}
                 <button
                   type="submit"
-                  className="w-full rounded-lg bg-[#21a07f] py-3 font-bold text-white transition hover:bg-[#1a8569] active:scale-95"
+                  className="relative group/btn w-full overflow-hidden rounded-xl bg-[#21a07f] py-3.5 text-xs font-bold text-white shadow-md shadow-[#21a07f]/10 transition-all duration-300 hover:bg-[#1a8569] hover:shadow-lg hover:shadow-[#21a07f]/20 active:scale-[0.98]"
                   disabled={formSubmitted}
                 >
-                  {formSubmitted ? "✓ Request Sent" : "Enroll Now"}
+                  <span className="relative z-10 tracking-wide flex items-center justify-center gap-1.5">
+                    {formSubmitted ? "✓ Registration Request Sent" : "Enroll In Course Now"}
+                  </span>
+                  {/* Subtle white gloss shimmer animation on button hover */}
+                  <div className="absolute inset-0 w-1/2 h-full bg-white/10 transform -skew-x-12 -translate-x-full group-hover/btn:animate-[shimmer_1s_ease-in-out]" />
                 </button>
               </form>
 
-              <div className="mt-4 flex flex-wrap gap-2">
-                <button onClick={handleDownloadSyllabus} className="inline-flex items-center gap-1 rounded-md border border-slate-200 px-3 py-1.5 text-xs font-bold text-slate-700 hover:border-primary-300 hover:text-primary-700">
-                  <Download size={14} /> Syllabus
+              {/* 5. Clean Auxiliary Actions Bar */}
+              <div className="mt-5 pt-4 border-t border-slate-100 flex items-center gap-3">
+                <button
+                  onClick={handleDownloadSyllabus}
+                  className="flex-1 inline-flex items-center justify-center gap-1.5 rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-xs font-bold text-slate-600 shadow-3xs transition-all duration-200 hover:border-slate-300 hover:bg-slate-50 hover:text-slate-800 active:scale-95"
+                >
+                  <Download size={13} strokeWidth={2.2} /> Syllabus
                 </button>
-                <button onClick={handleShare} className="inline-flex items-center gap-1 rounded-md border border-slate-200 px-3 py-1.5 text-xs font-bold text-slate-700 hover:border-primary-300 hover:text-primary-700">
-                  <Share2 size={14} /> Share
+                <button
+                  onClick={handleShare}
+                  className="flex-1 inline-flex items-center justify-center gap-1.5 rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-xs font-bold text-slate-600 shadow-3xs transition-all duration-200 hover:border-slate-300 hover:bg-slate-50 hover:text-slate-800 active:scale-95"
+                >
+                  <Share2 size={13} strokeWidth={2.2} /> Share
                 </button>
               </div>
+
             </div>
           </aside>
+
         </div>
 
         {/* Mobile bottom bar */}
@@ -468,8 +689,8 @@ const CourseDetailView: React.FC<{
             </div>
             <button
               onClick={() => {
-                const form = document.querySelector("aside form") as HTMLFormElement;
-                if (form) form.requestSubmit();
+                const form = document.querySelector("aside form");
+                if (form && form instanceof HTMLFormElement) form.requestSubmit();
                 else alert("Please fill the form above.");
               }}
               className="inline-flex h-11 flex-1 items-center justify-center rounded-lg bg-[#21a07f] px-4 text-sm font-bold text-white hover:bg-[#1a8569]"
@@ -488,7 +709,6 @@ const Courses = () => {
   const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
 
   const coursesData: Course[] = [
-    // ... (your existing courses data – unchanged)
     {
       id: 1,
       icon: FaHtml5,
@@ -499,8 +719,8 @@ const Courses = () => {
       discountPrice: 1000,
       discount: 60,
       studentsCount: 30,
-      description: "Master web structure and HTML5 tags – the first step into web programming.",
-      shortDescription: "Learn semantic HTML, forms, multimedia, and accessibility.",
+      description:
+        "HTML (HyperText Markup Language) is the foundational technology used to create and organize content on the web. It defines the structure, meaning, and layout of a webpage, enabling browsers to display text, images, and other media. At its core, HTML uses a system of elements and tags to describe different types of content. These tags act as building blocks that tell the browser how each piece of information should be presented. From simple paragraphs and headings to complex layouts and forms, HTML provides the framework that supports every modern website.",
       level: "beginner",
       language: "english",
       duration: "4 weeks",
@@ -512,7 +732,7 @@ const Courses = () => {
       ],
       whatYouWillLearn: ["HTML5 semantic tags", "Forms and input validation", "Multimedia embedding", "SEO basics"],
       curriculumTopics: ["Introduction to HTML", "Text formatting", "Links and images", "Tables and lists", "Forms", "Semantic HTML"],
-      requirements: ["No prior coding experience needed"],
+      requirements: ["Laptop with internet access"],
       targetAudience: ["Absolute beginners", "Aspiring web developers"],
       slug: "html-basics",
     },
@@ -526,7 +746,8 @@ const Courses = () => {
       discountPrice: 600,
       discount: 50,
       studentsCount: 35,
-      description: "Learn styling, Flexbox, CSS Grid and animations. Turn designs into code.",
+      description:
+        "CSS (Cascading Style Sheets) is a core web technology used to control the visual appearance and layout of a website. While HTML provides the structure of a webpage, CSS is responsible for transforming that structure into a visually appealing design. CSS allows developers to apply styles such as colors, fonts, spacing, positioning, and animations, ensuring that websites are not only functional but also engaging and professional.",
       level: "beginner",
       language: "english",
       duration: "5 weeks",
@@ -549,7 +770,8 @@ const Courses = () => {
       discountPrice: 750,
       discount: 50,
       studentsCount: 20,
-      description: "Programming logic, DOM manipulation and ES6.",
+      description:
+        "JavaScript is a powerful programming language used to create dynamic, interactive, and intelligent web experiences. While HTML provides the structure and CSS handles the design, JavaScript brings websites to life by enabling real-time updates, user interactions, and complex functionality. It runs directly in the browser and allows developers to build everything from simple interactive elements to full-scale web applications.",
       level: "beginner",
       language: "english",
       duration: "8 weeks",
@@ -572,7 +794,8 @@ const Courses = () => {
       discountPrice: 750,
       discount: 50,
       studentsCount: 25,
-      description: "Hooks, Components and State Management.",
+      description:
+        "React is a powerful JavaScript library used to build modern, fast, and interactive user interfaces, especially for web applications. It allows developers to create reusable components that manage their own data and efficiently update the user interface when changes occur. Developed and maintained by Meta (Facebook), React has become one of the most popular tools for frontend development, powering applications like social media platforms, dashboards, and large-scale web systems.",
       level: "intermediate",
       language: "english",
       duration: "10 weeks",
@@ -595,7 +818,8 @@ const Courses = () => {
       discountPrice: 750,
       discount: 50,
       studentsCount: 30,
-      description: "Build UI without writing extra CSS.",
+      description:
+        "Tailwind CSS is a modern utility-first CSS framework that enables developers to build custom, responsive, and professional user interfaces directly within their HTML or JSX. Instead of writing traditional CSS, Tailwind provides a set of small, reusable utility classes that can be combined to create any design efficiently. It is widely used in modern development environments, especially with frameworks like React and Next.js, to speed up UI development and maintain consistency across projects.",
       level: "beginner",
       language: "english",
       duration: "3 weeks",
@@ -618,7 +842,8 @@ const Courses = () => {
       discountPrice: 750,
       discount: 50,
       studentsCount: 20,
-      description: "SSR, API Routes and Static Site Generation.",
+      description:
+        "Next.js is a powerful React-based framework used to build fast, scalable, and production-ready web applications. It extends React by adding advanced features like server-side rendering, routing, performance optimization, and backend capabilities—making it a complete solution for modern web development. Developed by Vercel, Next.js is widely used for building everything from simple websites to complex SaaS platforms and enterprise applications.",
       level: "advanced",
       language: "english",
       duration: "8 weeks",
@@ -641,7 +866,8 @@ const Courses = () => {
       discountPrice: 750,
       discount: 50,
       studentsCount: 25,
-      description: "From scripting to AI and web development.",
+      description:
+        "Python is a powerful, high-level programming language known for its simplicity, readability, and versatility. It is widely used in web development, data science, artificial intelligence, automation, and software engineering, making it one of the most popular programming languages in the world. Python’s clean and easy-to-understand syntax allows developers to write efficient code with fewer lines, making it an excellent choice for both beginners and professionals.",
       level: "beginner",
       language: "english",
       duration: "12 weeks",
@@ -664,7 +890,8 @@ const Courses = () => {
       discountPrice: 750,
       discount: 50,
       studentsCount: 15,
-      description: "Build secure backends with Python.",
+      description:
+        "Django is a high-level Python web framework used to build secure, scalable, and high-performance web applications. It follows the MVT (Model–View–Template) architecture and provides a structured way to develop backend systems quickly and efficiently. Designed with best practices in mind, Django helps developers build powerful web platforms such as e-commerce systems, dashboards, APIs, and enterprise applications with minimal effort.",
       level: "intermediate",
       language: "english",
       duration: "10 weeks",
