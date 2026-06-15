@@ -10,7 +10,6 @@ import StatsAndCTA from './StatsAndCTA';
 import Team from './Team';
 import { motion } from 'framer-motion';
 
-// Load Inter with desired subsets and display swap
 const inter = Inter({
     subsets: ["latin"],
     display: "swap",
@@ -27,10 +26,10 @@ const Hero = () => {
                     className="w-full lg:w-1/2 flex items-center justify-center gap-3 md:gap-5 h-125"
                 >
                     {[
-                        { src: "/h1.png", h: "h-72", self: "self-center" },
-                        { src: "/h2.png", h: "h-96", self: "self-start" },
-                        { src: "/h3.png", h: "h-96", self: "self-end" },
-                        { src: "/h3.png", h: "h-72", self: "self-center" }
+                        { src: "/Elyas.png", h: "h-72", self: "self-center" },
+                        { src: "/haidar1.png", h: "h-96", self: "self-start" },
+                        { src: "/Mahdi1.png", h: "h-96", self: "self-end" },
+                        { src: "/Edris.png", h: "h-72", self: "self-center" }
                     ].map((img, index) => (
                         <motion.div
                             key={index}
