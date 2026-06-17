@@ -326,7 +326,7 @@ const CourseDetailView: React.FC<{
                       <div
                         key={idx}
                         className="group relative flex flex-col sm:flex-row sm:items-center gap-4 rounded-2xl border border-slate-200/60 bg-linear-to-b from-white to-slate-50/40 p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-slate-300 hover:shadow-md"
-                      > 
+                      >
                         <div className="absolute left-0 top-1/4 h-1/2 w-0.75 rounded-r-full bg-primary-600 opacity-0 scale-y-50 transition-all duration-300 group-hover:opacity-100 group-hover:scale-y-100" />
                         <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-slate-200/50 bg-white shadow-xs text-slate-500 transition-all duration-300 group-hover:scale-105 group-hover:border-primary-100 group-hover:bg-primary-50/50 group-hover:text-primary-600">
                           <Icon size={18} strokeWidth={2} />

@@ -6,11 +6,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowUpRight, Sparkles, Send, Mail, Phone, Globe } from "lucide-react";
 import { Inter } from "next/font/google";
 
-// Load Inter with desired subsets and display swap
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-inter", // optional: expose as CSS variable
+  variable: "--font-inter", 
 });
 
 const WorldClassNavbar = () => {
